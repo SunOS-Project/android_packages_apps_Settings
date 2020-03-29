@@ -181,6 +181,14 @@
             settings:controller="com.android.settings.sound.MediaControlsParentPreferenceController"
             settings:keywords="@string/keywords_media_controls"/>
 
+        <!-- Adaptive Playback -->
+        <Preference
+            android:key="sound_adaptive_playback_summary"
+            android:title="@string/adaptive_playback_screen_title"
+            android:fragment="com.android.settings.sound.AdaptivePlaybackSoundSettings"
+            android:order="-109"
+            settings:controller="com.android.settings.sound.AdaptivePlaybackParentPreferenceController" />
+
         <com.android.settingslib.PrimarySwitchPreference
             android:key="gesture_prevent_ringing_sound"
             android:title="@string/gesture_prevent_ringing_sound_title"
