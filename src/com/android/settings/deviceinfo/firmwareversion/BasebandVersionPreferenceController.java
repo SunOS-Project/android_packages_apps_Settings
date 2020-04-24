@@ -18,6 +18,7 @@ package com.android.settings.deviceinfo.firmwareversion;
 
 import android.content.Context;
 import android.os.SystemProperties;
+import android.text.TextUtils;
 
 import androidx.annotation.VisibleForTesting;
 
@@ -43,14 +44,13 @@ public class BasebandVersionPreferenceController extends BasePreferenceControlle
 
     @Override
     public CharSequence getSummary() {
-        String baseBands = SystemProperties.get(BASEBAND_PROPERTY,
+        String baseband = SystemProperties.get(BASEBAND_PROPERTY,
                 mContext.getString(R.string.device_info_default));
-        if (baseBands != null) {
-            String[] baseBandArray = baseBands.split(",");
-            if (baseBandArray != null && baseBandArray.length > 0) {
-                return baseBandArray[0];
+        for (String str : baseband.split(",")) {
+            if (!TextUtils.isEmpty(str)) {
+                return str;
             }
         }
-        return baseBands;
+        return baseband;
     }
 }
