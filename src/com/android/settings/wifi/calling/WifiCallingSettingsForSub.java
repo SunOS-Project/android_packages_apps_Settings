@@ -352,6 +352,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         final CarrierConfigManager configManager = (CarrierConfigManager)
                 getSystemService(Context.CARRIER_CONFIG_SERVICE);
         boolean isWifiOnlySupported = true;
+        boolean isImsPreferredSupported = false;
 
         if (configManager != null) {
             final PersistableBundle b = configManager.getConfigForSubId(mSubId);
@@ -368,6 +369,8 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
                 mOverrideWfcRoamingModeWhileUsingNtn = b.getBoolean(
                         CarrierConfigManager.KEY_OVERRIDE_WFC_ROAMING_MODE_WHILE_USING_NTN_BOOL,
                         true);
+                isImsPreferredSupported = b.getBoolean(
+                        CarrierConfigManager.KEY_CARRIER_WFC_SUPPORTS_IMS_PREFERRED_BOOL, false);
             }
         }
 
@@ -378,37 +381,72 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         mButtonWfcRoamingMode.setDialogTitle(
                 res.getString(R.string.wifi_calling_roaming_mode_dialog_title));
 
+        Log.d(TAG, "isWifiOnlySupported = " + isWifiOnlySupported + " isImsPreferredSupported = "
+                + isImsPreferredSupported);
+
         if (isWifiOnlySupported) {
-            // Set string resources WITH option wifi only in mButtonWfcMode.
-            mButtonWfcMode.setEntries(
-                    res.getStringArray(R.array.wifi_calling_mode_choices));
-            mButtonWfcMode.setEntryValues(res.getStringArray(R.array.wifi_calling_mode_values));
-            mButtonWfcMode.setEntrySummaries(
-                    res.getStringArray(R.array.wifi_calling_mode_summaries));
+            if (isImsPreferredSupported) {
+                mButtonWfcMode.setEntries(res.getStringArray(
+                        R.array.wifi_calling_mode_choices_with_ims_preferred));
+                mButtonWfcMode.setEntryValues(res.getStringArray(
+                        R.array.wifi_calling_mode_values_with_ims_preferred));
+                mButtonWfcMode.setEntrySummaries(res.getStringArray(
+                        R.array.wifi_calling_mode_summaries_with_ims_preferred));
 
-            // Set string resources WITH option wifi only in mButtonWfcRoamingMode.
-            mButtonWfcRoamingMode.setEntries(
-                    res.getStringArray(R.array.wifi_calling_mode_choices_v2));
-            mButtonWfcRoamingMode.setEntryValues(
-                    res.getStringArray(R.array.wifi_calling_mode_values));
-            mButtonWfcRoamingMode.setEntrySummaries(
-                    res.getStringArray(R.array.wifi_calling_mode_summaries));
+                mButtonWfcRoamingMode.setEntries(res.getStringArray(
+                        R.array.wifi_calling_mode_choices_v2_with_ims_preferred));
+                mButtonWfcRoamingMode.setEntryValues(res.getStringArray(
+                        R.array.wifi_calling_mode_values_with_ims_preferred));
+                mButtonWfcRoamingMode.setEntrySummaries(res.getStringArray(
+                        R.array.wifi_calling_mode_summaries_with_ims_preferred));
+            } else {
+                // Set string resources WITH option wifi only in mButtonWfcMode.
+                mButtonWfcMode.setEntries(
+                        res.getStringArray(R.array.wifi_calling_mode_choices));
+                mButtonWfcMode.setEntryValues(res.getStringArray(R.array.wifi_calling_mode_values));
+                mButtonWfcMode.setEntrySummaries(
+                        res.getStringArray(R.array.wifi_calling_mode_summaries));
+
+                // Set string resources WITH option wifi only in mButtonWfcRoamingMode.
+                mButtonWfcRoamingMode.setEntries(
+                        res.getStringArray(R.array.wifi_calling_mode_choices_v2));
+                mButtonWfcRoamingMode.setEntryValues(
+                        res.getStringArray(R.array.wifi_calling_mode_values));
+                mButtonWfcRoamingMode.setEntrySummaries(
+                        res.getStringArray(R.array.wifi_calling_mode_summaries));
+            }
         } else {
-            // Set string resources WITHOUT option wifi only in mButtonWfcMode.
-            mButtonWfcMode.setEntries(
-                    res.getStringArray(R.array.wifi_calling_mode_choices_without_wifi_only));
-            mButtonWfcMode.setEntryValues(
-                    res.getStringArray(R.array.wifi_calling_mode_values_without_wifi_only));
-            mButtonWfcMode.setEntrySummaries(
-                    res.getStringArray(R.array.wifi_calling_mode_summaries_without_wifi_only));
+            if (isImsPreferredSupported) {
+                mButtonWfcMode.setEntries(res.getStringArray(
+                        R.array.wifi_calling_mode_choices_without_wifi_only_with_ims_preferred));
+                mButtonWfcMode.setEntryValues(res.getStringArray(
+                        R.array.wifi_calling_mode_values_without_wifi_only_with_ims_preferred));
+                mButtonWfcMode.setEntrySummaries(res.getStringArray(
+                        R.array.wifi_calling_mode_summaries_without_wifi_only_with_ims_preferred));
 
-            // Set string resources WITHOUT option wifi only in mButtonWfcRoamingMode.
-            mButtonWfcRoamingMode.setEntries(
-                    res.getStringArray(R.array.wifi_calling_mode_choices_v2_without_wifi_only));
-            mButtonWfcRoamingMode.setEntryValues(
-                    res.getStringArray(R.array.wifi_calling_mode_values_without_wifi_only));
-            mButtonWfcRoamingMode.setEntrySummaries(
-                    res.getStringArray(R.array.wifi_calling_mode_summaries_without_wifi_only));
+                mButtonWfcRoamingMode.setEntries(res.getStringArray(
+                        R.array.wifi_calling_mode_choices_v2_without_wifi_only_with_ims_preferred));
+                mButtonWfcRoamingMode.setEntryValues(res.getStringArray(
+                        R.array.wifi_calling_mode_values_without_wifi_only_with_ims_preferred));
+                mButtonWfcRoamingMode.setEntrySummaries(res.getStringArray(
+                        R.array.wifi_calling_mode_summaries_without_wifi_only_with_ims_preferred));
+            } else {
+                // Set string resources WITHOUT option wifi only in mButtonWfcMode.
+                mButtonWfcMode.setEntries(
+                        res.getStringArray(R.array.wifi_calling_mode_choices_without_wifi_only));
+                mButtonWfcMode.setEntryValues(
+                        res.getStringArray(R.array.wifi_calling_mode_values_without_wifi_only));
+                mButtonWfcMode.setEntrySummaries(
+                        res.getStringArray(R.array.wifi_calling_mode_summaries_without_wifi_only));
+
+                // Set string resources WITHOUT option wifi only in mButtonWfcRoamingMode.
+                mButtonWfcRoamingMode.setEntries(
+                        res.getStringArray(R.array.wifi_calling_mode_choices_v2_without_wifi_only));
+                mButtonWfcRoamingMode.setEntryValues(
+                        res.getStringArray(R.array.wifi_calling_mode_values_without_wifi_only));
+                mButtonWfcRoamingMode.setEntrySummaries(
+                        res.getStringArray(R.array.wifi_calling_mode_summaries_without_wifi_only));
+            }
         }
 
         // NOTE: Buttons will be enabled/disabled in mTelephonyCallback
@@ -686,6 +724,9 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
                     break;
                 case ImsMmTelManager.WIFI_MODE_WIFI_PREFERRED:
                     resId = com.android.internal.R.string.wfc_mode_wifi_preferred_summary;
+                    break;
+                case ImsConfig.WfcModeFeatureValueConstants.IMS_PREFERRED:
+                    resId = com.android.internal.R.string.wfc_mode_ims_preferred_summary;
                     break;
                 default:
                     Log.e(TAG, "Unexpected WFC mode value: " + wfcMode);
