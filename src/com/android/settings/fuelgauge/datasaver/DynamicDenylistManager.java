@@ -98,6 +98,14 @@ public class DynamicDenylistManager {
         updateDenylistPref(uid, policy);
     }
 
+    /** Remove policy flags for specific UID. */
+    public void removeUidPolicyLocked(int uid, int policy) {
+        synchronized (mLock) {
+            mNetworkPolicyManager.removeUidPolicy(uid, policy);
+        }
+        updateDenylistPref(uid, policy);
+    }
+
     /** Suggest a list of package to set as POLICY_REJECT. */
     public void setDenylist(Set<Integer> denylistTargetUids) {
         if (denylistTargetUids == null) {
