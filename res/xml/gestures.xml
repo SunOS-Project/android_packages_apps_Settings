@@ -112,6 +112,13 @@
         android:summary="@string/advanced_restart_summary"
         android:defaultValue="false" />
 
+    <org.sun.custom.preference.SwitchPreferenceCompat
+        android:key="toggle_power_button_ends_call_preference"
+        android:persistent="false"
+        android:title="@string/accessibility_power_button_ends_call_prerefence_title"
+        android:summary="@string/accessibility_power_button_ends_call_prerefence_summary"
+        settings:controller="com.android.settings.accessibility.PowerButtonEndsCallPreferenceController"/>
+
     <org.sun.custom.preference.SystemSettingSwitchPreference
         android:key="torch_power_button_gesture"
         android:title="@string/power_button_torch_title"

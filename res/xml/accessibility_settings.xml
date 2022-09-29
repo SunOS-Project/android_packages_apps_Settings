@@ -38,14 +38,6 @@
         android:title="@string/display_category_title">
 
         <Preference
-            android:fragment="com.android.settings.accessibility.TextReadingPreferenceFragment"
-            android:icon="@drawable/ic_adaptive_font_download"
-            android:key="text_reading_options"
-            android:persistent="false"
-            android:title="@string/accessibility_text_reading_options_title"
-            settings:controller="com.android.settings.accessibility.TextReadingFragmentForA11ySettingsController"/>
-
-        <Preference
             android:fragment="com.android.settings.accessibility.ColorAndMotionFragment"
             android:key="color_and_motion"
             android:icon="@drawable/ic_color_and_motion"
@@ -92,23 +84,6 @@
             android:persistent="false"
             android:title="@string/accessibility_tap_assistance_title"
             settings:searchable="true"/>
-
-        <Preference
-            android:fragment="com.android.settings.accessibility.SystemControlsFragment"
-            android:key="system_controls_preference_screen"
-            android:icon="@drawable/ic_system_controls"
-            android:title="@string/accessibility_system_controls_title"
-            settings:searchable="true"/>
-
-        <Preference
-            android:fragment="com.android.settings.accessibility.VibrationSettings"
-            android:key="vibration_preference_screen"
-            android:icon="@drawable/ic_vibration"
-            android:persistent="false"
-            android:title="@string/accessibility_vibration_settings_title"
-            settings:controller="com.android.settings.accessibility.VibrationPreferenceController"
-            settings:keywords="@string/keywords_vibration"
-            android:summary="@string/accessibility_vibration_settings_summary"/>
 
     </PreferenceCategory>
 
