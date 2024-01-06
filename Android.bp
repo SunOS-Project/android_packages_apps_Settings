@@ -56,6 +56,7 @@ android_library {
     srcs: [
         "src/**/*.java",
         "src/**/*.kt",
+        ":Settings.sun-sources",
     ],
     exclude_srcs: [
         "src/com/android/settings/biometrics/fingerprint2/lib/**/*.kt",
@@ -64,6 +65,7 @@ android_library {
     resource_dirs: [
         "res",
         "res-export", // for external usage
+        "res-sun",
         "res-product",
     ],
     static_libs: [
@@ -166,6 +168,11 @@ android_app {
 android_library_import {
     name: "contextualcards",
     aars: ["libs/contextualcards.aar"],
+}
+
+android_library_import {
+    name: "glide",
+    aars: ["libs/glide-4.9.0.aar"],
 }
 
 filegroup {

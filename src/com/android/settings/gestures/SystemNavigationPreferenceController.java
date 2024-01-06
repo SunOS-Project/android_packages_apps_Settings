@@ -24,6 +24,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import com.android.internal.util.sun.LauncherUtils;
+
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
@@ -62,7 +64,7 @@ public class SystemNavigationPreferenceController extends BasePreferenceControll
 
         // Skip if the recents component is not defined
         final ComponentName recentsComponentName = ComponentName.unflattenFromString(
-                context.getString(com.android.internal.R.string.config_recentsComponentName));
+                LauncherUtils.getComponentName(context));
         if (recentsComponentName == null) {
             return false;
         }

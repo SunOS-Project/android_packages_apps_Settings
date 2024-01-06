@@ -50,6 +50,8 @@ import com.android.settingslib.utils.StringUtil;
 
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
+import org.sun.settings.deviceinfo.VersionUtils;
+
 public class BuildNumberPreferenceController extends BasePreferenceController implements
         LifecycleObserver, OnStart {
 
@@ -80,7 +82,14 @@ public class BuildNumberPreferenceController extends BasePreferenceController im
 
     @Override
     public CharSequence getSummary() {
-        return BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY);
+        final StringBuilder sb = new StringBuilder();
+        sb.append(BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY));
+        final String sunVersion = VersionUtils.getSunVersion();
+        if (!TextUtils.isEmpty(sunVersion)) {
+            sb.append("\n");
+            sb.append(sunVersion);
+        }
+        return sb.toString();
     }
 
     @Override

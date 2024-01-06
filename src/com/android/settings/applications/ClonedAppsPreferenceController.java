@@ -76,46 +76,8 @@ public class ClonedAppsPreferenceController extends BasePreferenceController
         if (!isAvailable()) {
             return;
         }
-        new AsyncTask<Void, Void, Integer[]>() {
-
-            @Override
-            protected Integer[] doInBackground(Void... unused) {
-                // Get list of allowlisted cloneable apps.
-                List<String> cloneableApps = Arrays.asList(
-                        mContext.getResources().getStringArray(
-                                com.android.internal.R.array.cloneable_apps));
-                List<String> primaryUserApps = mContext.getPackageManager()
-                        .getInstalledPackagesAsUser(/* flags*/ 0, UserHandle.myUserId()).stream()
-                        .map(x -> x.packageName).toList();
-                // Count number of installed apps in system user.
-                int availableAppsCount = (int) cloneableApps.stream()
-                        .filter(x -> primaryUserApps.contains(x)).count();
-
-                int cloneUserId = Utils.getCloneUserId(mContext);
-                if (cloneUserId == -1) {
-                    return new Integer[]{0, availableAppsCount};
-                }
-                // Get all apps in clone profile if present.
-                List<String> cloneProfileApps = mContext.getPackageManager()
-                        .getInstalledPackagesAsUser(/* flags*/ 0, cloneUserId).stream()
-                        .map(x -> x.packageName).toList();
-                // Count number of allowlisted app present in clone profile.
-                int clonedAppsCount = (int) cloneableApps.stream()
-                        .filter(x -> cloneProfileApps.contains(x)).count();
-
-                return new Integer[]{clonedAppsCount, availableAppsCount - clonedAppsCount};
-            }
-
-            @Override
-            protected void onPostExecute(Integer[] countInfo) {
-                updateSummary(countInfo[0], countInfo[1]);
-            }
-        }.execute();
-    }
-
-    private void updateSummary(int clonedAppsCount, int availableAppsCount) {
         mPreference.setSummary(mContext.getResources().getString(
-                R.string.cloned_apps_summary, clonedAppsCount, availableAppsCount));
+                R.string.cloned_apps_summary_custom));
     }
 
     @Override

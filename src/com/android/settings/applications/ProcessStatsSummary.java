@@ -28,7 +28,7 @@ import android.text.format.Formatter.BytesResult;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.settings.R;
 import com.android.settings.SummaryPreference;
@@ -64,7 +64,7 @@ public class ProcessStatsSummary extends ProcessStatsBase implements OnPreferenc
     private Preference mAverageUsed;
     private Preference mFree;
     private Preference mAppListPreference;
-    private SwitchPreference mForceEnablePssProfiling;
+    private SwitchPreferenceCompat mForceEnablePssProfiling;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -83,7 +83,7 @@ public class ProcessStatsSummary extends ProcessStatsBase implements OnPreferenc
         // This preference is only applicable if the flag for PSS deprecation in AppProfiler is
         // enabled. Otherwise, it can immediately be hidden.
         mForceEnablePssProfiling =
-                (SwitchPreference) findPreference(KEY_FORCE_ENABLE_PSS_PROFILING);
+                (SwitchPreferenceCompat) findPreference(KEY_FORCE_ENABLE_PSS_PROFILING);
         if (Flags.removeAppProfilerPssCollection()) {
             mForceEnablePssProfiling.setOnPreferenceClickListener(this);
             // Make the toggle reflect the current state of the global setting.

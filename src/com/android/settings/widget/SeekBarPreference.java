@@ -20,10 +20,16 @@ import static android.view.HapticFeedbackConstants.CLOCK_TICK;
 
 import static com.android.internal.jank.InteractionJankMonitor.CUJ_SETTINGS_SLIDER;
 
+import static org.sun.os.CustomVibrationAttributes.VIBRATION_ATTRIBUTES_SLIDER;
+
+import static vendor.sun.hardware.vibratorExt.Effect.SLIDER_EDGE;
+import static vendor.sun.hardware.vibratorExt.Effect.SLIDER_STEP;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.VibrationExtInfo;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -293,11 +299,28 @@ public class SeekBarPreference extends RestrictedPreference
                 setProgress(progress, false);
                 switch (mHapticFeedbackMode) {
                     case HAPTIC_FEEDBACK_MODE_ON_TICKS:
-                        seekBar.performHapticFeedback(CLOCK_TICK);
+                        if (progress == mMax || progress == mMin || mMin == mMax) {
+                            seekBar.performHapticFeedbackExt(new VibrationExtInfo.Builder()
+                                    .setEffectId(SLIDER_EDGE)
+                                    .setVibrationAttributes(VIBRATION_ATTRIBUTES_SLIDER)
+                                    .build()
+                            );
+                        } else {
+                            seekBar.performHapticFeedbackExt(new VibrationExtInfo.Builder()
+                                    .setEffectId(SLIDER_STEP)
+                                    .setAmplitude((float) (progress - mMin) / (mMax - mMin))
+                                    .setVibrationAttributes(VIBRATION_ATTRIBUTES_SLIDER)
+                                    .build()
+                            );
+                        }
                         break;
                     case HAPTIC_FEEDBACK_MODE_ON_ENDS:
                         if (progress == mMax || progress == mMin) {
-                            seekBar.performHapticFeedback(CLOCK_TICK);
+                            seekBar.performHapticFeedbackExt(new VibrationExtInfo.Builder()
+                                    .setEffectId(SLIDER_EDGE)
+                                    .setVibrationAttributes(VIBRATION_ATTRIBUTES_SLIDER)
+                                    .build()
+                            );
                         }
                         break;
                 }

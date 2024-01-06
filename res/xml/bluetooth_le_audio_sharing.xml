@@ -60,7 +60,7 @@
             android:title="@string/audio_sharing_stream_password_title"
             settings:controller="com.android.settings.connecteddevice.audiosharing.AudioSharingPasswordPreferenceController" />
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="audio_sharing_stream_compatibility"
             android:title="@string/audio_sharing_stream_compatibility_title"
             settings:controller="com.android.settings.connecteddevice.audiosharing.AudioSharingCompatibilityPreferenceController" />

@@ -55,11 +55,6 @@ class DisplaySizeData extends PreviewSizeData<Integer> {
 
     @Override
     void commit(int currentProgress) {
-        final int densityDpi = getValues().get(currentProgress);
-        if (densityDpi == getDefaultValue()) {
-            mDensity.clearForcedDisplayDensity();
-        } else {
-            mDensity.setForcedDisplayDensity(currentProgress);
-        }
+        mDensity.setForcedDisplayDensity(currentProgress);
     }
 }

@@ -134,7 +134,7 @@
             android:summary="@string/unlock_set_unlock_mode_pattern"
             settings:keywords="@string/keywords_lockscreen" />
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="visiblepattern_profile"
             android:title="@string/lockpattern_settings_enable_visible_pattern_title_profile"
             settings:controller="com.android.settings.security.VisiblePatternProfilePreferenceController" />

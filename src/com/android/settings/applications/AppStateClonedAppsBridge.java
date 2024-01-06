@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.sun.settings.applications.ApplicationUtils;
+
 /**
  * Filter to display only allowlisted apps on Cloned Apps page.
  */
@@ -39,7 +41,6 @@ public class AppStateClonedAppsBridge extends AppStateBaseBridge{
     private static final String TAG = "ClonedAppsBridge";
 
     private final Context mContext;
-    private final List<String> mAllowedApps;
     private List<String> mCloneProfileApps = new ArrayList<>();
     private int mCloneUserId;
 
@@ -47,8 +48,6 @@ public class AppStateClonedAppsBridge extends AppStateBaseBridge{
             Callback callback) {
         super(appState, callback);
         mContext = context;
-        mAllowedApps = Arrays.asList(mContext.getResources()
-                .getStringArray(com.android.internal.R.array.cloneable_apps));
     }
 
     @Override
@@ -74,10 +73,13 @@ public class AppStateClonedAppsBridge extends AppStateBaseBridge{
 
     @Override
     protected void updateExtraInfo(AppEntry app, String pkg, int uid) {
+        if (!ApplicationUtils.isAppCloneable(mContext, pkg)) {
+            app.extraInfo = Boolean.FALSE;
+            return;
+        }
         // Display package if allowlisted but not yet cloned.
         // Or if the app is present in clone profile alongwith being in allowlist.
-        if (mAllowedApps.contains(pkg)
-                && ((!mCloneProfileApps.contains(pkg) || (app.isClonedProfile())))) {
+        if (!mCloneProfileApps.contains(pkg) || app.isClonedProfile()) {
             app.extraInfo = Boolean.TRUE;
         } else {
             app.extraInfo = Boolean.FALSE;

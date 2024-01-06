@@ -30,7 +30,7 @@
         android:layout="@layout/accessibility_color_contrast_selector"
         settings:controller="com.android.settings.display.ContrastSelectorPreferenceController" />
 
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="toggle_high_text_contrast_preference"
         android:persistent="false"
         android:summary="@string/accessibility_toggle_high_text_contrast_preference_summary"

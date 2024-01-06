@@ -37,7 +37,7 @@
         android:title="@string/notification_polite_main_control_title"
         settings:controller="com.android.settings.notification.PoliteNotificationGlobalPreferenceController" />
 
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="notification_polite_work_profile"
         android:persistent="false"
         android:title="@string/notification_polite_work"

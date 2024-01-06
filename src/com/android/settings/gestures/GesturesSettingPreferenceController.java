@@ -27,6 +27,8 @@ import com.android.settingslib.core.AbstractPreferenceController;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.sun.settings.gestures.VolumeButtonMusicControlPreferenceController;
+
 public class GesturesSettingPreferenceController extends BasePreferenceController {
     private List<AbstractPreferenceController> mGestureControllers;
 
@@ -68,6 +70,7 @@ public class GesturesSettingPreferenceController extends BasePreferenceControlle
         controllers.add(new DoubleTapScreenPreferenceController(context, FAKE_PREF_KEY)
                 .setConfig(ambientDisplayConfiguration));
         controllers.add(new PreventRingingParentPreferenceController(context, FAKE_PREF_KEY));
+        controllers.add(new VolumeButtonMusicControlPreferenceController(context, FAKE_PREF_KEY));
         return controllers;
     }
 }

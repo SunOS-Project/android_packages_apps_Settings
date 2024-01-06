@@ -20,29 +20,29 @@
     android:title="@string/zen_category_exceptions" >
 
     <!-- Alarms -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="zen_mode_alarms"
         android:title="@string/zen_mode_alarms"/>
 
     <!-- Media -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="zen_mode_media"
         android:title="@string/zen_mode_media"
         android:summary="@string/zen_mode_media_summary"/>
 
     <!-- System -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="zen_mode_system"
         android:title="@string/zen_mode_system"
         android:summary="@string/zen_mode_system_summary"/>
 
     <!-- Reminders -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="zen_mode_reminders"
         android:title="@string/zen_mode_reminders"/>
 
     <!-- Events -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="zen_mode_events"
         android:title="@string/zen_mode_events"/>
 

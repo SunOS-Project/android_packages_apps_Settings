@@ -29,7 +29,7 @@
         android:layout="@layout/modes_set_schedule_layout"/>
 
     <!-- Exit mode with alarm -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="exit_at_alarm"
         android:title="@string/zen_mode_schedule_alarm_title"
         android:summary="@string/zen_mode_schedule_alarm_summary"

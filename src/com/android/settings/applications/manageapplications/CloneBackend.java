@@ -34,6 +34,8 @@ import android.util.Log;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.android.internal.util.sun.CustomUtils;
+
 import com.android.settings.Utils;
 
 import java.util.HashSet;
@@ -173,5 +175,6 @@ public class CloneBackend {
      */
     public void resetCloneUserId() {
         mCloneUserId = -1;
+        CustomUtils.forceStopDefaultLauncher(mContext);
     }
 }

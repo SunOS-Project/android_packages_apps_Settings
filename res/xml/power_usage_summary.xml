@@ -58,15 +58,49 @@
         settings:controller="com.android.settings.fuelgauge.batterytip.BatteryManagerPreferenceController"
         settings:keywords="@string/keywords_battery_adaptive_preferences" />
 
-    <SwitchPreferenceCompat
-        android:key="battery_percentage"
-        android:title="@string/battery_percentage"
-        android:summary="@string/battery_percentage_description"
-        settings:controller="com.android.settings.display.BatteryPercentagePreferenceController" />
+    <Preference
+        android:key="battery_icon"
+        android:title="@string/battery_icon_title"
+        android:summary="@string/battery_icon_summary"
+        android:fragment="org.sun.settings.fuelgauge.BatteryIconSettingsFragment" />
+
+    <Preference
+        android:key="optimized_charge"
+        android:title="@string/optimized_charge_title"
+        android:summary="@string/optimized_charge_summary"
+        android:fragment="org.sun.settings.fuelgauge.OptimizedChargeFragment"
+        settings:controller="org.sun.settings.fuelgauge.OptimizedChargePreferenceController" />
 
     <com.android.settingslib.widget.FooterPreference
         android:key="power_usage_footer"
         android:title="@string/battery_footer_summary"
         android:selectable="false"
         settings:searchable="false" />
+
+    <PreferenceCategory
+        android:key="wireless_charging_category_preference"
+        android:title="@string/wireless_charging_category_title"
+        settings:controller="org.sun.settings.fuelgauge.WirelessChargingCategoryPreferenceController">
+
+        <org.sun.custom.preference.SwitchPreferenceCompat
+            android:key="wireless_charging_enable"
+            android:title="@string/wireless_charging_enable_title"
+            android:summary="@string/wireless_charging_enable_summary"
+            settings:controller="org.sun.settings.fuelgauge.WirelessChargingEnablePreferenceController" />
+
+        <Preference
+            android:key="wireless_charging_quiet_mode"
+            android:dependency="wireless_charging_enable"
+            android:title="@string/wireless_charging_quiet_mode_title"
+            android:summary="@string/wireless_charging_quiet_mode_summary"
+            android:fragment="org.sun.settings.fuelgauge.WirelessChargingQuietModeFragment"
+            settings:controller="org.sun.settings.fuelgauge.WirelessChargingQuietModePreferenceController" />
+
+        <Preference
+            android:key="wireless_reverse_charging_enable"
+            android:title="@string/wireless_reverse_charging_title"
+            android:summary="@string/wireless_reverse_charging_summary"
+            android:fragment="org.sun.settings.fuelgauge.WirelessReverseChargingFragment"
+            settings:controller="org.sun.settings.fuelgauge.WirelessReverseChargingPreferenceController" />
+    </PreferenceCategory>
 </PreferenceScreen>

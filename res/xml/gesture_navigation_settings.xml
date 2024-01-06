@@ -28,13 +28,59 @@
         android:persistent="false"
         android:title="@string/assistant_gesture_category_title">
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="assistant_gesture_corner_swipe"
             android:title="@string/assistant_corner_gesture_title"
             android:summary="@string/assistant_corner_gesture_summary"
             settings:controller="com.android.settings.gestures.GestureNavigationSettingsAssistController"
         />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="back_gesture_category"
+        android:persistent="false"
+        android:title="@string/back_gesture_category_title">
+
+        <org.sun.custom.preference.SystemSettingSwitchPreference
+            android:key="back_gesture_arrow"
+            android:title="@string/back_gesture_arrow_title"
+            android:summary="@string/back_gesture_arrow_summary"
+            android:defaultValue="true" />
+
+        <com.android.settings.widget.LabeledSeekBarPreference
+            android:key="gesture_back_height"
+            android:title="@string/back_height_title"
+            android:max="3"
+            android:selectable="true"
+            settings:textStart="@string/back_height_bottom_label"
+            settings:textEnd="@string/back_height_full_label" />
+
+        <ListPreference
+            android:key="left_long_back_swipe_action" />
+
+        <ListPreference
+            android:key="right_long_back_swipe_action" />
+
+        <com.android.settings.widget.LabeledSeekBarPreference
+            android:key="long_back_swipe_threshold_port"
+            android:title="@string/long_back_swipe_threshold_port_title"
+            android:max="4"
+            settings:textStart="@string/low_label"
+            settings:textEnd="@string/high_label"/>
+
+        <com.android.settings.widget.LabeledSeekBarPreference
+            android:key="long_back_swipe_threshold_land"
+            android:title="@string/long_back_swipe_threshold_land_title"
+            android:max="4"
+            settings:textStart="@string/low_label"
+            settings:textEnd="@string/high_label"/>
+
+        <com.android.settingslib.widget.FooterPreference
+            android:key="long_back_swipe_footer"
+            android:title="@string/long_swipe_action_tip"
+            android:selectable="false"
+            settings:searchable="false"/>
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -55,12 +101,44 @@
             android:max="2"
             settings:textStart="@string/low_label"
             settings:textEnd="@string/high_label"/>
+
+        <com.android.settingslib.widget.FooterPreference
+            android:key="gesture_navigation_settings_footer"
+            android:title="@string/back_sensitivity_dialog_message"
+            android:selectable="false"
+            settings:searchable="false"/>
     </PreferenceCategory>
 
-    <com.android.settingslib.widget.FooterPreference
-        android:key="gesture_navigation_settings_footer"
-        android:title="@string/back_sensitivity_dialog_message"
-        android:selectable="false"
-        settings:searchable="false"/>
+    <PreferenceCategory
+        android:title="@string/gesture_navbar_category_title">
+
+        <com.android.settings.widget.LabeledSeekBarPreference
+            android:key="gesture_navbar_length_preference"
+            android:title="@string/pill_length_title"
+            android:max="3"
+            android:selectable="true"
+            settings:textStart="@string/hide_label"
+            settings:textEnd="@string/long_label"/>
+
+        <com.android.settings.widget.LabeledSeekBarPreference
+            android:key="gesture_navbar_radius_preference"
+            android:title="@string/pill_radius_title"
+            android:max="2"
+            android:selectable="true"
+            settings:textStart="@string/thin_label"
+            settings:textEnd="@string/thick_label"/>
+
+        <org.sun.custom.preference.SystemSettingSwitchPreference
+            android:key="gesture_navbar_ime_space"
+            android:title="@string/ime_space_title"
+            android:summary="@string/ime_space_summary"
+            android:defaultValue="true"/>
+
+        <org.sun.custom.preference.SystemSettingSwitchPreference
+            android:key="gesture_navbar_immersive"
+            android:title="@string/immersive_gesture_bar_title"
+            android:summary="@string/immersive_gesture_bar_summary"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
 </PreferenceScreen>
 

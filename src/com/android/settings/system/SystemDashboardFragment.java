@@ -22,6 +22,8 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 
+import com.android.internal.util.sun.CustomUtils;
+
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -32,11 +34,19 @@ public class SystemDashboardFragment extends DashboardFragment {
 
     private static final String TAG = "SystemDashboardFrag";
 
+    private static final String UPDATER_PREF_KEY = "system_update";
+    private static final String UPDATER_PKG = "org.sun.updater";
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
         final PreferenceScreen screen = getPreferenceScreen();
+
+        if (!CustomUtils.isPackageInstalled(getContext(), UPDATER_PKG)) {
+            screen.removePreference(screen.findPreference(UPDATER_PREF_KEY));
+        }
+
         // We do not want to display an advanced button if only one setting is hidden
         if (getVisiblePreferenceCount(screen) == screen.getInitialExpandedChildrenCount() + 1) {
             screen.setInitialExpandedChildrenCount(Integer.MAX_VALUE);

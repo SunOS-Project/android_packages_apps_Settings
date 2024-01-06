@@ -23,6 +23,8 @@ import static android.hardware.display.ColorDisplayManager.COLOR_MODE_SATURATED;
 import static android.hardware.display.ColorDisplayManager.VENDOR_COLOR_MODE_RANGE_MAX;
 import static android.hardware.display.ColorDisplayManager.VENDOR_COLOR_MODE_RANGE_MIN;
 
+import static org.sun.display.DisplayFeatureManager.CUSTOM_DISPLAY_COLOR_MODE_START;
+
 import android.content.res.Resources;
 import android.util.ArrayMap;
 
@@ -52,6 +54,7 @@ final class ColorModeUtils {
                     || colorMode == COLOR_MODE_BOOSTED
                     || colorMode == COLOR_MODE_SATURATED
                     || colorMode == COLOR_MODE_AUTOMATIC
+                    || colorMode >= CUSTOM_DISPLAY_COLOR_MODE_START
                     || (colorMode >= VENDOR_COLOR_MODE_RANGE_MIN
                     && colorMode <= VENDOR_COLOR_MODE_RANGE_MAX)) {
                 colorModesToSummaries.put(colorMode, colorModeOptionsStrings[i]);

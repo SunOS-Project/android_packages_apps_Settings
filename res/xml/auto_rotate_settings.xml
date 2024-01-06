@@ -28,10 +28,16 @@
         android:title="@string/auto_rotate_settings_primary_switch_title"
         settings:controller="com.android.settings.display.AutoRotateSwitchBarController"/>
 
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="auto_rotate_switch"
         android:title="@string/auto_rotate_settings_primary_switch_title"
         settings:controller="com.android.settings.display.AutoRotatePreferenceController"/>
+
+    <Preference
+        android:key="per_app_auto_rotate"
+        android:title="@string/per_app_auto_rotate_title"
+        android:summary="@string/per_app_auto_rotate_summary"
+        android:fragment="org.sun.settings.display.PerAppAutoRotateFragment"/>
 
     <com.android.settingslib.widget.BannerMessagePreference
         android:key="face_rotate_permission"
@@ -50,7 +56,7 @@
         android:title="@string/ambient_camera_summary_battery_saver_on"
         settings:controller="com.android.settings.display.SmartAutoRotateBatterySaverController" />
 
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="face_based_rotate"
         android:title="@string/auto_rotate_switch_face_based"
         settings:controller="com.android.settings.display.SmartAutoRotateController" />

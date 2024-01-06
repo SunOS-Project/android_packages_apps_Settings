@@ -74,7 +74,7 @@
          android:defaultValue="false"
          settings:allowDividerAbove="true"/>
 -->
-     <SwitchPreference
+     <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="broadcast_si_enable_audio_sync"
             android:title="@string/bcast_enable_audio_sync"
             android:defaultValue="false"   />

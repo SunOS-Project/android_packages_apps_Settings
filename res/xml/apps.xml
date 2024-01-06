@@ -124,4 +124,20 @@
         </Preference>
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="launcher_switcher_category"
+        android:title="@string/launcher_switcher_category"
+        android:order="200">
+
+        <ListPreference
+            android:key="launcher_switcher_preference"
+            android:title="@string/launcher_switcher_title"/>
+
+        <com.android.settingslib.widget.FooterPreference
+            android:key="launcher_switcher_info"
+            android:title="@string/launcher_switcher_info"
+            android:selectable="false"
+            settings:searchable="false"/>
+    </PreferenceCategory>
+
 </PreferenceScreen>

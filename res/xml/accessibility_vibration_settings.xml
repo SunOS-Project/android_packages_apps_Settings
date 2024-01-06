@@ -22,6 +22,7 @@
     <com.android.settingslib.widget.MainSwitchPreference
         android:key="vibration_switch_main"
         android:title="@string/accessibility_vibration_primary_switch_title"
+        app:vibrateOnClick="false"
         app:keywords="@string/keywords_accessibility_vibration_primary_switch"
         app:controller="com.android.settings.accessibility.VibrationMainSwitchPreferenceController"/>
 
@@ -40,6 +41,16 @@
             android:title="@string/vibrate_when_ringing_option_ramping_ringer"
             app:keywords="@string/keywords_ramping_ringer_vibration"
             app:controller="com.android.settings.accessibility.VibrationRampingRingerTogglePreferenceController"/>
+
+        <SwitchPreferenceCompat
+            android:key="vibrate_on_connected_preference_screen"
+            android:title="@string/incall_vibrate_on_connected"
+            app:controller="org.sun.settings.accessibility.VibrateOnConnectedTogglePreferenceController" />
+
+        <SwitchPreferenceCompat
+            android:key="vibrate_on_disconnected_preference_screen"
+            android:title="@string/incall_vibrate_on_disconnected"
+            app:controller="org.sun.settings.accessibility.VibrateOnDisconnectedTogglePreferenceController" />
 
     </PreferenceCategory>
 
@@ -65,11 +76,31 @@
         android:key="vibration_category_haptics"
         android:title="@string/accessibility_interactive_haptics_category_title">
 
-        <SwitchPreferenceCompat
-            android:key="vibration_preference_touch"
+        <Preference
+            android:key="touch_vibration_preference_screen"
             android:title="@string/accessibility_touch_vibration_title"
+            android:fragment="org.sun.settings.accessibility.CustomHapticFeedbackSettings"
             app:keywords="@string/keywords_touch_vibration"
-            app:controller="com.android.settings.accessibility.HapticFeedbackTogglePreferenceController" />
+            app:controller="org.sun.settings.accessibility.TouchFeedbackPreferenceController" />
+
+        <SwitchPreferenceCompat
+            android:key="force_enable_ime_haptic_preference_screen"
+            android:title="@string/always_enable_keyboard_haptic_title"
+            android:summary="@string/always_enable_keyboard_haptic_summary"
+            app:keywords="@string/keywords_touch_vibration"
+            app:controller="org.sun.settings.accessibility.ForceIMEHapticPreferenceController" />
+
+        <SwitchPreferenceCompat
+            android:key="face_unlock_vibration_preference_screen"
+            android:title="@string/face_unlock_vibration_title"
+            app:keywords="@string/keywords_touch_vibration"
+            app:controller="org.sun.settings.accessibility.FaceUnlockVibrationPreferenceController" />
+
+        <SwitchPreferenceCompat
+            android:key="fingerprint_unlock_vibration_preference_screen"
+            android:title="@string/fingerprint_unlock_vibration_title"
+            app:keywords="@string/keywords_touch_vibration"
+            app:controller="org.sun.settings.accessibility.FpUnlockVibrationPreferenceController" />
 
         <SwitchPreferenceCompat
             android:key="vibration_preference_media"
@@ -82,6 +113,55 @@
             android:title="@string/accessibility_keyboard_vibration_title"
             app:keywords="@string/keywords_keyboard_vibration"
             app:controller="com.android.settings.accessibility.KeyboardVibrationTogglePreferenceController"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="accessibility_vibration_pattern_category"
+        android:title="@string/vibration_pattern_category">
+
+        <ListPreference
+            android:key="notification_pattern_preference_screen"
+            android:dependency="vibration_switch_main"
+            android:title="@string/vibration_pattern_notification_title"
+            app:controller="org.sun.settings.accessibility.NotificationVibrationPatternPreferenceController" />
+
+        <ListPreference
+            android:key="ringtone_pattern_preference_screen"
+            android:dependency="vibration_switch_main"
+            android:title="@string/vibration_pattern_ringtone_title"
+            app:controller="org.sun.settings.accessibility.RingtoneVibrationPatternPreferenceController" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="accessibility_vibration_strength_category"
+        android:title="@string/vibration_strength_category"
+        app:controller="org.sun.settings.accessibility.VibrationStrengthCategoryPreferenceController">
+
+        <com.android.settings.widget.LabeledSeekBarPreference
+            android:key="alarm_call_strength_preference_screen"
+            android:title="@string/alarm_call_strength_title"
+            app:controller="org.sun.settings.accessibility.AlarmCallStrengthSeekBarPreferenceController"
+            app:textStart="@string/vibration_strength_softer"
+            app:textEnd="@string/vibration_strength_stronger"
+            app:tickMark="@android:color/transparent" />
+
+        <com.android.settings.widget.LabeledSeekBarPreference
+            android:key="haptic_strength_preference_screen"
+            android:title="@string/haptic_strength_title"
+            app:controller="org.sun.settings.accessibility.HapticStrengthSeekBarPreferenceController"
+            app:textStart="@string/vibration_strength_softer"
+            app:textEnd="@string/vibration_strength_stronger"
+            app:tickMark="@android:color/transparent" />
+
+        <com.android.settings.widget.LabeledSeekBarPreference
+            android:key="notification_strength_preference_screen"
+            android:title="@string/notification_strength_title"
+            app:controller="org.sun.settings.accessibility.NotificationStrengthSeekBarPreferenceController"
+            app:textStart="@string/vibration_strength_softer"
+            app:textEnd="@string/vibration_strength_stronger"
+            app:tickMark="@android:color/transparent" />
 
     </PreferenceCategory>
 

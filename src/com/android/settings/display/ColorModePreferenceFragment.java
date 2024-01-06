@@ -20,6 +20,8 @@ import static android.hardware.display.ColorDisplayManager.COLOR_MODE_SATURATED;
 import static android.hardware.display.ColorDisplayManager.VENDOR_COLOR_MODE_RANGE_MAX;
 import static android.hardware.display.ColorDisplayManager.VENDOR_COLOR_MODE_RANGE_MIN;
 
+import static org.sun.display.DisplayFeatureManager.CUSTOM_DISPLAY_COLOR_MODE_START;
+
 import android.app.settings.SettingsEnums;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -200,6 +202,14 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment {
     }
 
     @Override
+    public void updateCandidates() {
+        super.updateCandidates();
+        PreferenceScreen screen = getPreferenceScreen();
+        getPreferenceManager().inflateFromResource(screen.getContext(), R.xml.color_mode_settings,
+                screen);
+    }
+
+    @Override
     protected void addStaticPreferences(PreferenceScreen screen) {
         final LayoutPreference preview = new LayoutPreference(screen.getContext(),
                 R.layout.color_mode_preview);
@@ -272,6 +282,7 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment {
                 || colorMode == COLOR_MODE_BOOSTED
                 || colorMode == COLOR_MODE_SATURATED
                 || colorMode == COLOR_MODE_AUTOMATIC
+                || colorMode >= CUSTOM_DISPLAY_COLOR_MODE_START
                 || (colorMode >= VENDOR_COLOR_MODE_RANGE_MIN
                 && colorMode <= VENDOR_COLOR_MODE_RANGE_MAX);
     }
@@ -385,6 +396,18 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment {
         }
     }
 
+    private static boolean hasCustomColorMode(int[] colorModes) {
+        if (colorModes == null) {
+            return false;
+        }
+        for (int mode : colorModes) {
+            if (mode >= CUSTOM_DISPLAY_COLOR_MODE_START) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider(R.xml.color_mode_settings) {
 
@@ -392,7 +415,8 @@ public class ColorModePreferenceFragment extends RadioButtonPickerFragment {
                 protected boolean isPageSearchEnabled(Context context) {
                     final int[] availableColorModes = context.getResources().getIntArray(
                             com.android.internal.R.array.config_availableColorModes);
-                    return availableColorModes != null && availableColorModes.length > 0
+                    return hasCustomColorMode(availableColorModes) ||
+                            availableColorModes != null && availableColorModes.length > 0
                             && !ColorDisplayManager.areAccessibilityTransformsEnabled(context);
                 }
             };

@@ -82,20 +82,20 @@
             settings:allowDividerAbove="true"
             settings:allowDividerBelow="false"/>
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="mobile_data_enable"
             android:title="@string/mobile_data_settings_title"
             android:summary="@string/mobile_data_settings_summary"
             settings:controller="com.android.settings.network.telephony.MobileDataPreferenceController"
             settings:allowDividerAbove="true"/>
 
-        <SwitchPreference
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="data_during_calls"
             android:title="@string/data_during_calls_title"
             android:summary="@string/data_during_calls_summary"
             settings:controller="com.android.settings.network.telephony.DataDuringCallsPreferenceController"/>
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="auto_data_switch"
             android:title="@string/auto_data_switch_title"
             android:summary="@string/auto_data_switch_summary"
@@ -120,7 +120,7 @@
             android:title="@string/billing_cycle"
             settings:controller="com.android.settings.datausage.BillingCyclePreferenceController"/>
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="carrier_wifi_toggle"
             android:title="@string/carrier_wifi_offload_title"
             android:summary="@string/carrier_wifi_offload_summary"
@@ -132,13 +132,13 @@
             android:selectable="false"
             settings:searchable="false"/>
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="mms_message"
             android:title="@string/mms_message_title"
             android:summary="@string/mms_message_summary"
             settings:controller="com.android.settings.network.telephony.MmsMessagePreferenceController"/>
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="enhanced_4g_lte"
             android:title="@string/enhanced_4g_lte_mode_title"
             android:persistent="false"
@@ -146,7 +146,7 @@
             settings:keywords="@string/keywords_enhance_4g_lte"
             settings:controller="com.android.settings.network.telephony.Enhanced4gLtePreferenceController"/>
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="4g_calling"
             android:title="@string/enhanced_4g_lte_mode_title_4g_calling"
             android:persistent="false"
@@ -154,20 +154,20 @@
             settings:keywords="@string/keywords_enhance_4g_lte"
             settings:controller="com.android.settings.network.telephony.Enhanced4gCallingPreferenceController"/>
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="advance_call"
             android:title="@string/enhanced_4g_lte_mode_title_advanced_calling"
             android:persistent="false"
             android:summary="@string/enhanced_4g_lte_mode_summary"
             settings:keywords="@string/keywords_enhance_4g_lte"
             settings:controller="com.android.settings.network.telephony.Enhanced4gAdvancedCallingPreferenceController"/>
-        <SwitchPreference
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="enabled_5g"
             android:title="@string/enabled_5g_mode_title"
             android:persistent="true"
             settings:controller="com.android.settings.network.telephony.Enabled5GPreferenceController"/>
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="contact_discovery_opt_in"
             android:title="@string/contact_discovery_opt_in_title"
             android:persistent="false"
@@ -236,13 +236,13 @@
                 </intent>
             </Preference>
 
-            <SwitchPreferenceCompat
+            <org.sun.custom.preference.SwitchPreferenceCompat
                 android:key="video_calling_key"
                 android:title="@string/video_calling_settings_title"
                 android:persistent="true"
                 settings:controller="com.android.settings.network.telephony.VideoCallingPreferenceController"/>
 
-            <SwitchPreference
+            <org.sun.custom.preference.SwitchPreferenceCompat
                 android:key="backup_calling_key"
                 android:title="@string/backup_calling_settings_title"
                 android:persistent="false"
@@ -276,7 +276,7 @@
             settings:allowDividerBelow="true"
             settings:controller="com.android.settings.network.telephony.NetworkPreferenceCategoryController">
 
-            <SwitchPreference
+            <org.sun.custom.preference.SwitchPreferenceCompat
                 android:key="select_network_key"
                 android:title="@string/enable_snpn"
                 settings:controller="com.android.settings.network.telephony.gsm.SelectNetworkPreferenceController"/>
@@ -331,7 +331,7 @@
             settings:useAdminDisabledSummary="true"
             settings:userRestriction="no_cellular_2g"/>
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="require_cellular_encryption"
             android:title="@string/require_cellular_encryption_title"
             android:summary="@string/require_cellular_encryption_summary"

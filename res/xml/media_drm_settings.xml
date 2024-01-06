@@ -21,7 +21,7 @@
     android:title="@string/media_drm_settings_title"
     settings:searchable="false">
 
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="force_swcrypto_fallback"
         android:title="@string/force_swcrypto_fallback_title"
         android:summary="@string/force_swcrypto_fallback_summary"

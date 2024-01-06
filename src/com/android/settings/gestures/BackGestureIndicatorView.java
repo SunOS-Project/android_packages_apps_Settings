@@ -16,9 +16,15 @@
 
 package com.android.settings.gestures;
 
+import static com.android.internal.policy.GestureNavigationSettingsObserverExt.GESTURE_HEIGHT_1_2;
+import static com.android.internal.policy.GestureNavigationSettingsObserverExt.GESTURE_HEIGHT_1_4;
+import static com.android.internal.policy.GestureNavigationSettingsObserverExt.GESTURE_HEIGHT_3_4;
+import static com.android.internal.policy.GestureNavigationSettingsObserverExt.GESTURE_HEIGHT_FULL;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PixelFormat;
+import android.graphics.Point;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +43,7 @@ public class BackGestureIndicatorView extends LinearLayout {
     private ImageView mRightIndicator;
     private BackGestureIndicatorDrawable mLeftDrawable;
     private BackGestureIndicatorDrawable mRightDrawable;
+    private int mHeightScale;
 
     public BackGestureIndicatorView(Context context) {
         super(context);
@@ -87,6 +94,10 @@ public class BackGestureIndicatorView extends LinearLayout {
         indicator.setWidth(width);
     }
 
+    public void setIndicatorHeightScale(int heightScale) {
+        mHeightScale = heightScale;
+    }
+
     public WindowManager.LayoutParams getLayoutParams(
             WindowManager.LayoutParams parentWindowAttributes) {
         int copiedFlags = (parentWindowAttributes.flags
@@ -99,8 +110,28 @@ public class BackGestureIndicatorView extends LinearLayout {
                         | copiedFlags,
                 PixelFormat.TRANSLUCENT);
 
+        setCurrentGestureHeight(lp);
         lp.setTitle("BackGestureIndicatorView");
         lp.token = getContext().getActivityToken();
         return lp;
+    }
+
+    private void setCurrentGestureHeight(WindowManager.LayoutParams lp) {
+        Point displaySize = new Point();
+        getContext().getDisplay().getRealSize(displaySize);
+
+        if (mHeightScale == GESTURE_HEIGHT_FULL) {
+            lp.height = displaySize.y;
+            lp.y = 0;
+        } else if (mHeightScale == GESTURE_HEIGHT_3_4) {
+            lp.height = (int) (displaySize.y * 0.75f);
+            lp.y = displaySize.y - lp.height;
+        } else if (mHeightScale == GESTURE_HEIGHT_1_2) {
+            lp.height = (int) (displaySize.y * 0.5f);
+            lp.y = displaySize.y - lp.height;
+        } else if (mHeightScale == GESTURE_HEIGHT_1_4) {
+            lp.height = (int) (displaySize.y * 0.25f);
+            lp.y = displaySize.y - lp.height;
+        }
     }
 }

@@ -23,6 +23,7 @@ import com.android.settings.MainClear;
 import com.android.settings.MainClearConfirm;
 import com.android.settings.ResetNetwork;
 import com.android.settings.Settings;
+import com.android.settings.Settings.ScreenRefreshRateActivity;
 import com.android.settings.TestingSettings;
 import com.android.settings.TrustedCredentialsSettings;
 import com.android.settings.accessibility.AccessibilityDetailsSettingsFragment;
@@ -39,6 +40,7 @@ import com.android.settings.accessibility.ToggleColorInversionPreferenceFragment
 import com.android.settings.accessibility.ToggleDaltonizerPreferenceFragment;
 import com.android.settings.accessibility.ToggleReduceBrightColorsPreferenceFragment;
 import com.android.settings.accessibility.VibrationIntensitySettingsFragment;
+import com.android.settings.accessibility.VibrationSettings;
 import com.android.settings.accessibility.shortcuts.EditShortcutsPreferenceFragment;
 import com.android.settings.accounts.AccountDashboardFragment;
 import com.android.settings.accounts.AccountSyncSettings;
@@ -204,6 +206,12 @@ import com.android.settings.wifi.details.WifiNetworkDetailsFragment;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSettings2;
 import com.android.settings.wifi.tether.WifiTetherSettings;
+
+import org.sun.settings.display.refreshrate.ScreenRefreshRateFragment;
+import org.sun.settings.fuelgauge.OptimizedChargeFragment;
+import org.sun.settings.fuelgauge.WirelessChargingQuietModeFragment;
+import org.sun.settings.fuelgauge.WirelessReverseChargingFragment;
+import org.sun.settings.notification.HeadsUpSettingsFragment;
 
 public class SettingsGateway {
 
@@ -398,6 +406,12 @@ public class SettingsGateway {
             CellularSecuritySettingsFragment.class.getName(),
             AccessibilityHearingAidsFragment.class.getName(),
             HearingDevicePairingFragment.class.getName(),
+            HeadsUpSettingsFragment.class.getName(),
+            OptimizedChargeFragment.class.getName(),
+            ScreenRefreshRateFragment.class.getName(),
+            VibrationSettings.class.getName(),
+            WirelessChargingQuietModeFragment.class.getName(),
+            WirelessReverseChargingFragment.class.getName(),
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
@@ -444,5 +458,11 @@ public class SettingsGateway {
             UserBackupSettingsActivity.class.getName(),
             Settings.MemtagPageActivity.class.getName(),
             Settings.NavigationModeSettingsActivity.class.getName(),
+            Settings.HeadsUpSettingsActivity.class.getName(),
+            Settings.OptimizedChargeActivity.class.getName(),
+            Settings.QuietModeActivity.class.getName(),
+            Settings.ReverseChargingActivity.class.getName(),
+            Settings.ScreenRefreshRateActivity.class.getName(),
+            Settings.VibrationSettingsActivity.class.getName(),
     };
 }

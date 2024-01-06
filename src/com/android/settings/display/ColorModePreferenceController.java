@@ -13,6 +13,8 @@
  */
 package com.android.settings.display;
 
+import static org.sun.display.DisplayFeatureManager.CUSTOM_DISPLAY_COLOR_MODE_START;
+
 import android.content.Context;
 import android.hardware.display.ColorDisplayManager;
 
@@ -28,8 +30,11 @@ public class ColorModePreferenceController extends BasePreferenceController {
 
     @Override
     public int getAvailabilityStatus() {
-        return mContext.getSystemService(ColorDisplayManager.class)
-                .isDeviceColorManaged()
+        final int[] availableColorModes = mContext.getResources().getIntArray(
+                com.android.internal.R.array.config_availableColorModes);
+        return hasCustomColorMode(availableColorModes) ||
+                availableColorModes.length > 0 &&
+                mContext.getSystemService(ColorDisplayManager.class).isDeviceColorManaged()
                 && !ColorDisplayManager.areAccessibilityTransformsEnabled(mContext) ?
                 AVAILABLE : DISABLED_FOR_USER;
     }
@@ -42,5 +47,17 @@ public class ColorModePreferenceController extends BasePreferenceController {
     @VisibleForTesting
     public int getColorMode() {
         return mContext.getSystemService(ColorDisplayManager.class).getColorMode();
+    }
+
+    private static boolean hasCustomColorMode(int[] colorModes) {
+        if (colorModes == null) {
+            return false;
+        }
+        for (int mode : colorModes) {
+            if (mode >= CUSTOM_DISPLAY_COLOR_MODE_START) {
+                return true;
+            }
+        }
+        return false;
     }
 }

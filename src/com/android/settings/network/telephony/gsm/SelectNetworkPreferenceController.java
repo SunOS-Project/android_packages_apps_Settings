@@ -19,7 +19,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.settings.R;
 import com.android.settings.network.telephony.MobileNetworkUtils;
@@ -52,7 +52,7 @@ public class SelectNetworkPreferenceController extends TelephonyTogglePreference
     private boolean mServiceConnected;
     private Object mLock = new Object();
     @VisibleForTesting
-    SwitchPreference mSwitchPreference;
+    SwitchPreferenceCompat mSwitchPreference;
 
     public SelectNetworkPreferenceController(Context context, String key) {
         super(context, key);

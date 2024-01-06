@@ -16,9 +16,17 @@
 
 package com.android.settings.widget;
 
+import static android.view.HapticFeedbackConstants.CONTEXT_CLICK;
+
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
+import static org.sun.os.CustomVibrationAttributes.VIBRATION_ATTRIBUTES_SWITCH;
+
+import static vendor.sun.hardware.vibratorExt.Effect.CLICK;
+import static vendor.sun.hardware.vibratorExt.Effect.SWITCH_TOGGLE;
+
 import android.content.Context;
+import android.os.VibrationExtInfo;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -104,6 +112,12 @@ public class SettingsMainSwitchBar extends MainSwitchBar {
 
     @Override
     public boolean performClick() {
+        mSwitch.performHapticFeedbackExt(new VibrationExtInfo.Builder()
+                .setEffectId(SWITCH_TOGGLE)
+                .setFallbackEffectId(CLICK)
+                .setVibrationAttributes(VIBRATION_ATTRIBUTES_SWITCH)
+                .build()
+        );
         if (mDisabledByAdmin) {
             performRestrictedClick();
             return true;

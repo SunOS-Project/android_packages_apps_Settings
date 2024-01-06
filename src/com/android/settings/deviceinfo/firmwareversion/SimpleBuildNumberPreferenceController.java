@@ -19,8 +19,11 @@ package com.android.settings.deviceinfo.firmwareversion;
 import android.content.Context;
 import android.os.Build;
 import android.text.BidiFormatter;
+import android.text.TextUtils;
 
 import com.android.settings.core.BasePreferenceController;
+
+import org.sun.settings.deviceinfo.VersionUtils;
 
 public class SimpleBuildNumberPreferenceController extends BasePreferenceController {
 
@@ -36,6 +39,13 @@ public class SimpleBuildNumberPreferenceController extends BasePreferenceControl
 
     @Override
     public CharSequence getSummary() {
-        return BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY);
+        final StringBuilder sb = new StringBuilder();
+        sb.append(BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY));
+        final String sunVersion = VersionUtils.getSunVersion();
+        if (!TextUtils.isEmpty(sunVersion)) {
+            sb.append("\n");
+            sb.append(sunVersion);
+        }
+        return sb.toString();
     }
 }

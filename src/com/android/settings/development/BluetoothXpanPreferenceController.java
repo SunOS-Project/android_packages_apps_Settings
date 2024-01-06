@@ -25,7 +25,7 @@ import android.os.SystemProperties;
 import android.util.Log;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 import androidx.preference.PreferenceScreen;
 
 import com.android.settings.core.PreferenceControllerMixin;
@@ -80,7 +80,7 @@ public class BluetoothXpanPreferenceController extends DeveloperOptionsPreferenc
     @Override
     public void updateState(Preference preference) {
         final boolean isEnabled = SystemProperties.getBoolean(PROP_BLUETOOTH_XPAN_ENABLE_DISABLE, false);
-        ((SwitchPreference) mPreference).setChecked(isEnabled);
+        ((SwitchPreferenceCompat) mPreference).setChecked(isEnabled);
         if (DBG) Log.d(TAG, "updateState " + isEnabled);
     }
 }

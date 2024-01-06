@@ -62,7 +62,7 @@
             settings:keywords="@string/keywords_reduce_bright_colors"
             settings:controller="com.android.settings.accessibility.ReduceBrightColorsPreferenceController"/>
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="even_dimmer_activated"
             android:title="@string/even_dimmer_display_title"
             android:summary="@string/even_dimmer_display_summary"
@@ -117,7 +117,7 @@
         android:persistent="false"
         android:title="@string/keyboard_category_title">
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:icon="@drawable/ic_sticky_keys"
             android:key="toggle_keyboard_sticky_keys"
             android:persistent="false"
@@ -126,7 +126,7 @@
             settings:controller="com.android.settings.accessibility.KeyboardStickyKeyPreferenceController"
             settings:searchable="true" />
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:icon="@drawable/ic_bounce_keys"
             android:key="toggle_keyboard_bounce_keys"
             android:persistent="false"
@@ -134,7 +134,7 @@
             settings:controller="com.android.settings.accessibility.KeyboardBounceKeyPreferenceController"
             settings:searchable="true" />
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:icon="@drawable/ic_slow_keys"
             android:key="toggle_keyboard_slow_keys"
             android:persistent="false"
@@ -179,7 +179,7 @@
         android:persistent="false"
         android:title="@string/audio_category_title">
 
-        <SwitchPreferenceCompat
+        <org.sun.custom.preference.SwitchPreferenceCompat
             android:key="toggle_audio_description"
             android:persistent="false"
             android:icon="@drawable/ic_audio_description"

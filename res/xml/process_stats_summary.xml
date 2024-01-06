@@ -19,7 +19,7 @@
     android:title="@string/app_memory_use"
     android:key="app_list">
 
-    <SwitchPreference
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="force_enable_pss_profiling"
         android:title="@string/force_enable_pss_profiling_title"
         android:summary="@string/force_enable_pss_profiling_summary" />

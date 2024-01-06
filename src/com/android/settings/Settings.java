@@ -536,4 +536,11 @@ public class Settings extends SettingsActivity {
 
     public static class HearingDevicesActivity extends SettingsActivity { /* empty */ }
     public static class HearingDevicesPairingActivity extends SettingsActivity { /* empty */ }
+
+    public static class HeadsUpSettingsActivity extends SettingsActivity {}
+    public static class OptimizedChargeActivity extends SettingsActivity {}
+    public static class QuietModeActivity extends SettingsActivity {}
+    public static class ReverseChargingActivity extends SettingsActivity {}
+    public static class ScreenRefreshRateActivity extends SettingsActivity {}
+    public static class VibrationSettingsActivity extends SettingsActivity {}
 }

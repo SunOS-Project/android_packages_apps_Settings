@@ -49,10 +49,23 @@
         settings:keywords="@string/keywords_system_navigation" />
 
     <Preference
+        android:key="off_screen_gestures"
+        android:title="@string/off_screen_gesture_title"
+        android:summary="@string/off_screen_gesture_summary"
+        android:fragment="org.sun.settings.gestures.OffScreenGesturesFragment"
+        settings:controller="org.sun.settings.gestures.OffScreenGesturesPreferenceController" />
+
+    <Preference
         android:key="gesture_one_handed"
         android:title="@string/one_handed_title"
         android:fragment="com.android.settings.gestures.OneHandedSettings"
         settings:controller="com.android.settings.gestures.OneHandedEnablePreferenceController" />
+
+    <Preference
+        android:key="volume_button_music_control_summary"
+        android:title="@string/volume_button_music_control_title"
+        android:fragment="org.sun.settings.gestures.VolumeButtonMusicControlSettingsFragment"
+        settings:controller="org.sun.settings.gestures.VolumeButtonMusicControlPreferenceController" />
 
     <Preference
         android:key="gesture_tap_screen_input_summary"
@@ -81,9 +94,34 @@
         android:fragment="com.android.settings.gestures.PowerMenuSettings"
         settings:controller="com.android.settings.gestures.PowerMenuPreferenceController" />
 
+    <Preference
+        android:key="screenshot_gestures_key"
+        android:title="@string/screenshot_gestures_title"
+        android:summary="@string/screenshot_gestures_summary"
+        android:fragment="org.sun.settings.gestures.ScreenshotGesturesFragment" />
+
     <com.android.settingslib.PrimarySwitchPreference
         android:key="gesture_prevent_ringing_summary"
         android:title="@string/gesture_prevent_ringing_screen_title"
         android:fragment="com.android.settings.gestures.PreventRingingGestureSettings"
         settings:controller="com.android.settings.gestures.PreventRingingParentPreferenceController" />
+
+    <org.sun.custom.preference.SecureSettingSwitchPreference
+        android:key="advanced_reboot"
+        android:title="@string/advanced_restart_title"
+        android:summary="@string/advanced_restart_summary"
+        android:defaultValue="false" />
+
+    <org.sun.custom.preference.SystemSettingSwitchPreference
+        android:key="torch_power_button_gesture"
+        android:title="@string/power_button_torch_title"
+        android:summary="@string/power_button_torch_summary"
+        android:defaultValue="false" />
+
+    <org.sun.custom.preference.SecureSettingSwitchPreference
+        android:key="screen_off_udfps_enabled"
+        android:title="@string/screen_off_fingerprint_title"
+        android:summary="@string/screen_off_fingerprint_summary"
+        android:defaultValue="false"
+        settings:controller="org.sun.settings.gestures.ScreenOffUdfpsGesturePreferenceController" />
 </PreferenceScreen>

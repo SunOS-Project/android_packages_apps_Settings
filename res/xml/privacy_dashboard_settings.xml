@@ -79,7 +79,7 @@
         settings:controller="com.android.settings.privacy.MicToggleController"/>
 
     <!-- Show passwords -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="show_password"
         android:title="@string/show_password"
         android:summary="@string/show_password_summary"
@@ -92,7 +92,7 @@
         android:summary="@string/summary_placeholder"/>
 
     <!-- Show media on lock screen -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="privacy_media_controls_lockscreen"
         android:title="@string/media_controls_lockscreen_title"
         android:summary="@string/media_controls_lockscreen_description"
@@ -129,7 +129,7 @@
          Hence, we show both here, but the controller itself will decide if it's available or not.
     -->
 
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="content_capture"
         android:title="@string/content_capture"
         android:summary="@string/content_capture_summary"
@@ -142,7 +142,7 @@
         settings:controller="com.android.settings.privacy.EnableContentCaptureWithServiceSettingsPreferenceController"/>
 
     <!-- Clipboard access notifications -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="show_clip_access_notification"
         android:title="@string/show_clip_access_notification"
         android:summary="@string/show_clip_access_notification_summary"

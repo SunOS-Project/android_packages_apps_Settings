@@ -105,6 +105,14 @@
         settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
         settings:controller="com.android.settings.notification.zen.ZenModePreferenceController"/>
 
+    <!-- Dolby -->
+    <Preference
+        android:key="audio_dolby_atmos"
+        android:order="-125"
+        android:title="@string/dolby_title"
+        android:summary="@string/dolby_summary"
+        settings:controller="org.sun.settings.sound.DolbyAtmosPreferenceController"/>
+
     <!-- Phone ringtone -->
     <com.android.settings.DefaultRingtonePreference
         android:key="phone_ringtone"
@@ -132,6 +140,14 @@
         android:order="-100"
         settings:controller="com.android.settings.sound.MediaControlsParentPreferenceController"
         settings:keywords="@string/keywords_media_controls"/>
+
+    <!-- Adaptive Playback -->
+    <Preference
+        android:key="sound_adaptive_playback_summary"
+        android:title="@string/adaptive_playback_screen_title"
+        android:fragment="org.sun.settings.sound.AdaptivePlaybackSoundSettingsFragment"
+        android:order="-95"
+        settings:controller="org.sun.settings.sound.AdaptivePlaybackParentPreferenceController" />
 
     <!-- Also vibration -->
     <Preference
@@ -168,38 +184,52 @@
         android:ringtoneType="alarm"
         android:order="-60"/>
 
+    <org.sun.custom.preference.SystemSettingSwitchPreference
+        android:key="silent_notification_screen_on"
+        android:title="@string/silent_notification_screen_on_title"
+        android:summary="@string/silent_notification_screen_on_summary"
+        android:defaultValue="false"
+        android:order="-55"/>
+
     <!-- Dial pad tones -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="dial_pad_tones"
         android:title="@string/dial_pad_tones_title"
         android:order="-50"/>
 
     <!-- Screen locking sounds -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="screen_locking_sounds"
         android:title="@string/screen_locking_sounds_title"
         android:order="-45"/>
 
     <!-- Charging sounds -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="charging_sounds"
-        android:title="@string/charging_sounds_title"
+        android:title="@string/charging_sound_custom_title"
         android:order="-40"/>
 
     <!-- Docking sounds -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="docking_sounds"
         android:title="@string/docking_sounds_title"
         android:order="-35"/>
 
+    <!-- Screenshot sounds -->
+    <org.sun.custom.preference.SystemSettingSwitchPreference
+        android:key="screenshot_sound"
+        android:title="@string/screenshot_sound_title"
+        android:order="-33"
+        android:defaultValue="true"/>
+
     <!-- Touch sounds -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="touch_sounds"
         android:title="@string/touch_sounds_title"
         android:order="-30"/>
 
     <!-- Show vibrate icon in status bar -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="vibrate_icon"
         android:title="@string/vibrate_icon_title"
         android:order="-27"/>
@@ -212,7 +242,7 @@
         android:order="-20"/>
 
     <!-- Boot sounds -->
-    <SwitchPreferenceCompat
+    <org.sun.custom.preference.SwitchPreferenceCompat
         android:key="boot_sounds"
         android:title="@string/boot_sounds_title"
         android:order="-15"/>
@@ -225,7 +255,7 @@
         android:order="-10"/>
         <!-- Call connected tones -->
 
-        <SwitchPreference
+        <org.sun.custom.preference.SwitchPreferenceCompat
           android:key="call_connected_tones"
           android:title="@string/call_connected_tones_title" />
 
@@ -236,4 +266,54 @@
         android:fragment="com.android.settings.notification.SoundWorkSettings"
         android:order="100"
         settings:controller="com.android.settings.notification.WorkSoundsPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="alert_slider_categoty"
+        android:title="@string/alert_slider_category_title"
+        settings:controller="org.sun.settings.sound.AlertSliderCategoryPreferenceController">
+
+        <org.sun.custom.preference.GlobalSettingSwitchPreference
+            android:key="alert_slider_mute_media"
+            android:title="@string/alert_slider_mute_media_title"
+            android:summary="@string/alert_slider_mute_media_summary"
+            android:defaultValue="false" />
+
+        <org.sun.custom.preference.GlobalSettingSwitchPreference
+            android:key="alert_slider_apply_for_headset"
+            android:dependency="alert_slider_mute_media"
+            android:title="@string/alert_slider_apply_for_headset_title"
+            android:summaryOn="@string/alert_slider_apply_for_headset_on"
+            android:summaryOff="@string/alert_slider_apply_for_headset_off"
+            android:defaultValue="false" />
+
+        <org.sun.custom.preference.GlobalSettingSwitchPreference
+            android:key="alert_slider_vibrate_on_bluetooth"
+            android:title="@string/alert_slider_vibrate_on_bluetooth_title"
+            android:summary="@string/alert_slider_vibrate_on_bluetooth_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/volume_panel_category_title">
+
+        <org.sun.custom.preference.SystemSettingListPreference
+            android:key="volume_panel_position_port"
+            android:title="@string/volume_panel_position_portrait_title"
+            android:entries="@array/volume_panel_position_entries"
+            android:entryValues="@array/volume_panel_position_values"
+            settings:controller="org.sun.settings.sound.VolumePanelPosPortPreferenceController" />
+
+        <org.sun.custom.preference.SystemSettingListPreference
+            android:key="volume_panel_position_land"
+            android:title="@string/volume_panel_position_landscape_title"
+            android:entries="@array/volume_panel_position_entries"
+            android:entryValues="@array/volume_panel_position_values"
+            settings:controller="org.sun.settings.sound.VolumePanelPosLandPreferenceController" />
+
+        <org.sun.custom.preference.SystemSettingSwitchPreference
+            android:key="volume_panel_show_app_volume"
+            android:title="@string/per_app_volume_title"
+            android:summary="@string/per_app_volume_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
 </PreferenceScreen>

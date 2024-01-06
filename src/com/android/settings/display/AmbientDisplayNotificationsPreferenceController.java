@@ -13,7 +13,7 @@
  */
 package com.android.settings.display;
 
-import static android.provider.Settings.Secure.DOZE_ENABLED;
+import static org.sun.provider.SettingsExt.Secure.DOZE_FOR_NOTIFICATIONS;
 
 import android.app.settings.SettingsEnums;
 import android.content.Context;
@@ -69,12 +69,12 @@ public class AmbientDisplayNotificationsPreferenceController extends
 
     @Override
     public boolean isChecked() {
-        return getAmbientConfig().pulseOnNotificationEnabled(MY_USER);
+        return getAmbientConfig().userPulseOnNotificationEnabled(MY_USER);
     }
 
     @Override
     public boolean setChecked(boolean isChecked) {
-        Settings.Secure.putInt(mContext.getContentResolver(), DOZE_ENABLED, isChecked ? ON : OFF);
+        Settings.Secure.putInt(mContext.getContentResolver(), DOZE_FOR_NOTIFICATIONS, isChecked ? ON : OFF);
         return true;
     }
 

@@ -16,6 +16,13 @@
 
 package com.android.settings.biometrics.fingerprint;
 
+import static org.sun.os.CustomVibrationAttributes.VIBRATION_ATTRIBUTES_FINGERPRINT_UNLOCK;
+
+import static vendor.sun.hardware.vibratorExt.Effect.CLICK;
+import static vendor.sun.hardware.vibratorExt.Effect.DOUBLE_CLICK;
+import static vendor.sun.hardware.vibratorExt.Effect.UNIFIED_ERROR;
+import static vendor.sun.hardware.vibratorExt.Effect.UNIFIED_SUCCESS;
+
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -23,9 +30,8 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.os.Process;
 import android.os.VibrationAttributes;
-import android.os.VibrationEffect;
+import android.os.VibrationExtInfo;
 import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -54,16 +60,8 @@ public class UdfpsEnrollProgressBarDrawable extends Drawable {
     private static final float STROKE_WIDTH_DP = 12f;
     private static final Interpolator DEACCEL = new DecelerateInterpolator();
 
-    private static final VibrationEffect VIBRATE_EFFECT_ERROR =
-            VibrationEffect.createWaveform(new long[]{0, 5, 55, 60}, -1);
-    private static final VibrationAttributes FINGERPRINT_ENROLLING_SONFICATION_ATTRIBUTES =
-            VibrationAttributes.createForUsage(VibrationAttributes.USAGE_ACCESSIBILITY);
-
     private static final VibrationAttributes HARDWARE_FEEDBACK_VIBRATION_ATTRIBUTES =
             VibrationAttributes.createForUsage(VibrationAttributes.USAGE_HARDWARE_FEEDBACK);
-
-    private static final VibrationEffect SUCCESS_VIBRATION_EFFECT =
-            VibrationEffect.get(VibrationEffect.EFFECT_CLICK);
 
     private final float mStrokeWidthPx;
     @ColorInt
@@ -205,9 +203,13 @@ public class UdfpsEnrollProgressBarDrawable extends Drawable {
         mShowingHelp = showingHelp;
         if (mShowingHelp) {
             if (mVibrator != null && mIsAccessibilityEnabled) {
-                mVibrator.vibrate(Process.myUid(), mContext.getOpPackageName(),
-                        VIBRATE_EFFECT_ERROR, getClass().getSimpleName() + "::onEnrollmentHelp",
-                        FINGERPRINT_ENROLLING_SONFICATION_ATTRIBUTES);
+                mVibrator.vibrateExt(new VibrationExtInfo.Builder()
+                        .setEffectId(UNIFIED_ERROR)
+                        .setFallbackEffectId(DOUBLE_CLICK)
+                        .setReason(getClass().getSimpleName() + "::onEnrollmentHelp")
+                        .setVibrationAttributes(HARDWARE_FEEDBACK_VIBRATION_ATTRIBUTES)
+                        .build()
+                );
             }
         } else {
             // If the first touch is an error, remainingSteps will be -1 and the callback
@@ -215,16 +217,21 @@ public class UdfpsEnrollProgressBarDrawable extends Drawable {
             // we still would like to vibrate.
             if (mVibrator != null) {
                 if (remainingSteps == -1 && mIsAccessibilityEnabled) {
-                    mVibrator.vibrate(Process.myUid(), mContext.getOpPackageName(),
-                            VIBRATE_EFFECT_ERROR,
-                            getClass().getSimpleName() + "::onFirstTouchError",
-                            FINGERPRINT_ENROLLING_SONFICATION_ATTRIBUTES);
+                    mVibrator.vibrateExt(new VibrationExtInfo.Builder()
+                            .setEffectId(UNIFIED_ERROR)
+                            .setFallbackEffectId(DOUBLE_CLICK)
+                            .setReason(getClass().getSimpleName() + "::onFirstTouchError")
+                            .setVibrationAttributes(HARDWARE_FEEDBACK_VIBRATION_ATTRIBUTES)
+                            .build()
+                    );
                 } else if (remainingSteps != -1 && !mIsAccessibilityEnabled) {
-                    mVibrator.vibrate(Process.myUid(),
-                            mContext.getOpPackageName(),
-                            SUCCESS_VIBRATION_EFFECT,
-                            getClass().getSimpleName() + "::OnEnrollmentProgress",
-                            HARDWARE_FEEDBACK_VIBRATION_ATTRIBUTES);
+                    mVibrator.vibrateExt(new VibrationExtInfo.Builder()
+                            .setEffectId(UNIFIED_SUCCESS)
+                            .setFallbackEffectId(CLICK)
+                            .setReason(getClass().getSimpleName() + "::OnEnrollmentProgress")
+                            .setVibrationAttributes(VIBRATION_ATTRIBUTES_FINGERPRINT_UNLOCK)
+                            .build()
+                    );
                 }
             }
         }

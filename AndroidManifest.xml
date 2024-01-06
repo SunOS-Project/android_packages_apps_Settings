@@ -183,7 +183,8 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
             android:directBootAware="true"
             android:appComponentFactory="androidx.core.app.CoreComponentFactory"
             android:gwpAsanMode="always"
-            android:enableOnBackInvokedCallback="true">
+            android:enableOnBackInvokedCallback="true"
+            tools:replace="android:appComponentFactory">
 
         <uses-library android:name="org.apache.http.legacy" />
         <uses-library android:name="com.qti.extphone.extphonelib"/>
@@ -5330,6 +5331,73 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
                 <action android:name="com.android.settings.action.BLUETOOTH_LE_AUDIO_SHARING_STOP" />
             </intent-filter>
         </receiver>
+
+        <!-- Heads Up -->
+        <activity android:name="Settings$HeadsUpSettingsActivity"
+            android:label="@string/heads_up_notifications_title"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="org.sun.settings.notification.HeadsUpSettingsFragment"/>
+        </activity>
+        <!-- Optimized charging -->
+        <activity android:name="Settings$OptimizedChargeActivity"
+            android:label="@string/optimized_charge_title"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="org.sun.settings.fuelgauge.OptimizedChargeFragment"/>
+        </activity>
+        <!-- Screen refresh rate -->
+        <activity android:name="Settings$ScreenRefreshRateActivity"
+            android:label="@string/screen_refresh_rate_title"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="org.sun.settings.display.refreshrate.ScreenRefreshRateFragment"/>
+        </activity>
+        <!-- Vibration & Haptic Settings -->
+        <activity android:name="Settings$VibrationSettingsActivity"
+            android:label="@string/accessibility_vibration_settings_title"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.android.settings.accessibility.VibrationSettings"/>
+        </activity>
+        <!-- Wireless charging quiet mode -->
+        <activity android:name="Settings$QuietModeActivity"
+            android:label="@string/wireless_charging_settings_title"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="org.sun.settings.fuelgauge.WirelessChargingQuietModeFragment"/>
+        </activity>
+        <!-- Wireless reverse charging -->
+        <activity android:name="Settings$ReverseChargingActivity"
+            android:label="@string/wireless_reverse_charging_title"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="org.sun.settings.fuelgauge.WirelessReverseChargingFragment"/>
+        </activity>
 
         <!-- This is the longest AndroidManifest.xml ever. -->
     </application>

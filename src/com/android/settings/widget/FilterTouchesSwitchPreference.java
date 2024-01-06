@@ -20,7 +20,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.preference.PreferenceViewHolder;
-import androidx.preference.SwitchPreferenceCompat;
+import org.sun.custom.preference.SwitchPreferenceCompat;
 
 /**
  *  This widget with enabled filterTouchesWhenObscured attribute use to replace

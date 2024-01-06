@@ -33,7 +33,7 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.TelephonyIntents;
@@ -46,7 +46,7 @@ public class DataDuringCallsPreferenceController extends TelephonyTogglePreferen
         SubscriptionsChangeListener.SubscriptionsChangeListenerClient {
     private static final String TAG = "DataDuringCallsPreferenceController";
 
-    private SwitchPreference mPreference;
+    private SwitchPreferenceCompat mPreference;
     private SubscriptionsChangeListener mChangeListener;
     private TelephonyManager mManager;
     private MobileDataContentObserver mMobileDataContentObserver;
