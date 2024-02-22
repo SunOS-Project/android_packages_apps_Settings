@@ -59,6 +59,13 @@
         settings:keywords="@string/keywords_battery_adaptive_preferences" />
 
     <Preference
+        android:key="battery_info"
+        android:title="@string/battery_info"
+        android:summary="@string/battery_info_summary"
+        android:fragment="com.android.settings.deviceinfo.batteryinfo.BatteryInfoFragment"
+        settings:keywords="@string/keywords_battery_info"/>
+
+    <Preference
         android:key="battery_icon"
         android:title="@string/battery_icon_title"
         android:summary="@string/battery_icon_summary"
