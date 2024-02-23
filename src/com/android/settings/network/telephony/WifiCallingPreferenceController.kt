@@ -28,6 +28,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.preference.Preference
 import androidx.preference.PreferenceScreen
+import com.android.ims.ImsConfig
 import com.android.settings.R
 import com.android.settings.network.telephony.wificalling.WifiCallingRepository
 import com.android.settingslib.spa.framework.util.collectLatestWithLifecycle
@@ -127,6 +128,9 @@ open class WifiCallingPreferenceController @JvmOverloads constructor(
 
             ImsMmTelManager.WIFI_MODE_WIFI_PREFERRED ->
                 com.android.internal.R.string.wfc_mode_wifi_preferred_summary
+
+            ImsConfig.WfcModeFeatureValueConstants.IMS_PREFERRED ->
+                com.android.internal.R.string.wfc_mode_ims_preferred_summary
 
             else -> com.android.internal.R.string.wifi_calling_off_summary
         }
