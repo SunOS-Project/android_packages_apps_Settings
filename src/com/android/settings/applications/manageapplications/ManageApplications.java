@@ -20,6 +20,7 @@ import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING;
 import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE;
 
 import static com.android.internal.jank.InteractionJankMonitor.CUJ_SETTINGS_PAGE_SCROLL;
+import static com.android.internal.util.sun.CustomUtils.INTENT_RESET_CLONE_USER_ID;
 import static com.android.settings.ChangeIds.CHANGE_RESTRICT_SAW_INTENT;
 import static com.android.settings.Utils.PROPERTY_DELETE_ALL_APP_CLONES_ENABLED;
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_ALL;
@@ -43,8 +44,10 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.settings.SettingsEnums;
 import android.app.usage.IUsageStatsManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.UserInfo;
@@ -285,6 +288,9 @@ public class ManageApplications extends InstrumentedFragment
     // Whether or not search view is expanded.
     @VisibleForTesting
     boolean mExpandSearch;
+
+    private final ResetCloneUserIdReceiver mResetCloneUserIdReceiver =
+            new ResetCloneUserIdReceiver();
 
     private View mRootView;
     private Spinner mFilterSpinner;
@@ -588,6 +594,7 @@ public class ManageApplications extends InstrumentedFragment
         if (mApplications != null) {
             mApplications.updateLoading();
         }
+        mResetCloneUserIdReceiver.register();
     }
 
     @Override
@@ -629,6 +636,7 @@ public class ManageApplications extends InstrumentedFragment
         if (mResetAppsHelper != null) {
             mResetAppsHelper.stop();
         }
+        mResetCloneUserIdReceiver.unregister();
     }
 
     @Override
@@ -1985,6 +1993,25 @@ public class ManageApplications extends InstrumentedFragment
                 mEntries = (ArrayList<ApplicationsState.AppEntry>) results.values;
                 notifyDataSetChanged();
             }
+        }
+    }
+
+    private class ResetCloneUserIdReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (INTENT_RESET_CLONE_USER_ID.equals(intent.getAction())) {
+                CloneBackend.getInstance(getContext()).resetCloneUserId();
+                mApplications.rebuild();
+            }
+        }
+
+        public void register() {
+            final IntentFilter filter = new IntentFilter(INTENT_RESET_CLONE_USER_ID);
+            getContext().registerReceiverAsUser(this, UserHandle.ALL, filter, null, null);
+        }
+
+        public void unregister() {
+            getContext().unregisterReceiver(this);
         }
     }
 }
