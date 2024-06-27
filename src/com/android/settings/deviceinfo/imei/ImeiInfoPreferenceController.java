@@ -42,6 +42,7 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
+import com.android.settings.deviceinfo.PhoneNumberSummaryPreference;
 import com.android.settings.deviceinfo.simstatus.SlotSimStatus;
 import com.android.settings.network.SubscriptionUtil;
 import com.android.settings.network.telephony.MobileNetworkUtils;
@@ -163,6 +164,11 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
         updatePreference(preference, keyToSlotIndex(preference.getKey()));
     }
 
+    @Override
+    public CharSequence getSummary() {
+        return mContext.getString(R.string.device_info_protected_single_press);
+    }
+
     private CharSequence getSummary(int simSlot) {
         final int phoneType = getPhoneType(simSlot);
         return phoneType == PHONE_TYPE_CDMA ? mTelephonyManager.getMeid(simSlot)
@@ -210,17 +216,8 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
 
     @VisibleForTesting
     protected void updatePreference(Preference preference, int simSlot) {
-        if (simSlot < 0) {
-            preference.setVisible(false);
-            return;
-        }
-        if (preference.getKey().startsWith(DEFAULT_MEID_KEY)) {
-            preference.setTitle(getTitleForCdmaPhone(simSlot, false));
-            preference.setSummary(getMeid(simSlot));
-            return;
-        }
         preference.setTitle(getTitle(simSlot));
-        preference.setSummary(getSummary(simSlot));
+        preference.setSummary(getSummary());
     }
 
     private String getImei(int slot) {
@@ -315,7 +312,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
 
     @VisibleForTesting
     Preference createNewPreference(Context context) {
-        return new Preference(context);
+        return new PhoneNumberSummaryPreference(context);
     }
 
     private int makeRadioVersion(int major, int minor) {
@@ -330,4 +327,3 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
         return (halVersion > makeRadioVersion(2, 0)) ? true:false;
     }
 }
-
