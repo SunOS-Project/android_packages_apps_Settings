@@ -64,6 +64,7 @@ public class MobileDataPreferenceController extends TelephonyTogglePreferenceCon
     int mDialogType;
     @VisibleForTesting
     boolean mNeedDialog;
+    boolean mIsInSetupWizard;
 
     private WifiPickerTrackerHelper mWifiPickerTrackerHelper;
     protected MobileNetworkRepository mMobileNetworkRepository;
@@ -75,9 +76,10 @@ public class MobileDataPreferenceController extends TelephonyTogglePreferenceCon
     MobileNetworkInfoEntity mMobileNetworkInfoEntity;
 
     public MobileDataPreferenceController(Context context, String key, Lifecycle lifecycle,
-            LifecycleOwner lifecycleOwner, int subId) {
+            LifecycleOwner lifecycleOwner, int subId, boolean isInSetupWizard) {
         this(context, key);
         mSubId = subId;
+        mIsInSetupWizard = isInSetupWizard;
         mLifecycleOwner = lifecycleOwner;
         if (lifecycle != null) {
             lifecycle.addObserver(this);
@@ -92,7 +94,7 @@ public class MobileDataPreferenceController extends TelephonyTogglePreferenceCon
 
     @Override
     public int getAvailabilityStatus(int subId) {
-        if (Flags.isDualSimOnboardingEnabled()) {
+        if (Flags.isDualSimOnboardingEnabled() && !mIsInSetupWizard) {
             return CONDITIONALLY_UNAVAILABLE;
         }
         return subId != SubscriptionManager.INVALID_SUBSCRIPTION_ID
