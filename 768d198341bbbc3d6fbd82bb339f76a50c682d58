@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aad272da_80f9f25c",
+        "filename": "src/com/android/settings/network/NetworkProviderSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2024-11-03T13:08:03Z",
+      "side": 1,
+      "message": "while generally speaking, I agree with these two lines being where you moved them, this is unrelated to the actual patch, isn\u0027t it?\nWould move it to a separate \"cleanup\" patch maybe",
+      "revId": "768d198341bbbc3d6fbd82bb339f76a50c682d58",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
