@@ -16,6 +16,24 @@
       "message": "while generally speaking, I agree with these two lines being where you moved them, this is unrelated to the actual patch, isn\u0027t it?\nWould move it to a separate \"cleanup\" patch maybe",
       "revId": "768d198341bbbc3d6fbd82bb339f76a50c682d58",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd3935f4_4ee2f199",
+        "filename": "src/com/android/settings/network/NetworkProviderSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 29415
+      },
+      "writtenOn": "2024-11-05T20:37:15Z",
+      "side": 1,
+      "message": "mIsInSetupWizard needs to be set before addPreferences() is called, and it wasn\u0027t before. This is required for MobileDataPreferenceController to know if it\u0027s being called from SUW.",
+      "parentUuid": "aad272da_80f9f25c",
+      "revId": "768d198341bbbc3d6fbd82bb339f76a50c682d58",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
