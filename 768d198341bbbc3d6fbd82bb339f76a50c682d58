@@ -34,6 +34,24 @@
       "parentUuid": "aad272da_80f9f25c",
       "revId": "768d198341bbbc3d6fbd82bb339f76a50c682d58",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef57bea_b810f626",
+        "filename": "src/com/android/settings/network/NetworkProviderSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2024-11-06T15:33:12Z",
+      "side": 1,
+      "message": "ah ok. that wasn\u0027t clear and thus it looked like an unrelated change. maybe add that to the commit message, although im not blocking it for that",
+      "parentUuid": "dd3935f4_4ee2f199",
+      "revId": "768d198341bbbc3d6fbd82bb339f76a50c682d58",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
