@@ -31,6 +31,12 @@
             android:key="physical_keyboard_pref"
             android:title="@string/physical_keyboard_title"
             android:summary="@string/summary_placeholder"/>
+
+        <org.sun.custom.preference.SwitchPreferenceCompat
+            android:key="back_gesture_on_ime"
+            android:title="@string/back_gesture_on_keyboard_title"
+            android:summary="@string/back_gesture_on_keyboard_summary"
+            settings:controller="org.sun.settings.inputmethod.BackGestureOnImeController"/>
     </PreferenceCategory>
 
     <PreferenceCategory
