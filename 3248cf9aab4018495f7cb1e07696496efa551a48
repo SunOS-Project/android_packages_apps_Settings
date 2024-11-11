@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e7ac71_9bf1f091",
+        "filename": "res/xml/top_level_settings_v2.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2024-11-11T19:06:43Z",
+      "side": 1,
+      "message": "here instead?",
+      "revId": "3248cf9aab4018495f7cb1e07696496efa551a48",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
