@@ -1558,7 +1558,11 @@ public final class Utils extends com.android.settingslib.Utils {
     }
 
     private static void disableComponent(PackageManager pm, ComponentName componentName) {
-        pm.setComponentEnabledSetting(componentName,
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        try {
+            pm.setComponentEnabledSetting(componentName,
+                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        } catch (IllegalArgumentException e) {
+            Log.w(TAG, "Unable to disable component: " + componentName);
+        }
     }
 }
