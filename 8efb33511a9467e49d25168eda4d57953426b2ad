@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd38c827_d853c1a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 29242
+      },
+      "writtenOn": "2024-11-25T01:38:11Z",
+      "side": 1,
+      "message": "Test 1:\n\nSet \"dashboard_tile_pref_com.google.android.gms.backup.component.BackupOrRestoreSettingsActivity\" preference key with a order of -45 on a WITH_GMS build to be below storage and above battery in the \"top_level_system_info_category\". Observe that WITHOUT this change, the preference LOSES its order and results in two bottom preferences in the aforementioned category after onResume.\n\n\nSet \"dashboard_tile_pref_com.google.android.gms.backup.component.BackupOrRestoreSettingsActivity\" preference key with a order of -45 on a WITH_GMS build to be below storage and above battery in the \"top_level_system_info_category\". Observe that WITH this change, the preference RETAINS its order in the aforementioned category after onResume.",
+      "revId": "8efb33511a9467e49d25168eda4d57953426b2ad",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
