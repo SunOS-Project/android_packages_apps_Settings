@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16b66c90_e3ef3b2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2024-12-03T18:19:01Z",
+      "side": 1,
+      "message": "Now also verified with 3 button nav and in landscape...",
+      "revId": "43c8587fcf5599347ec7509ada9b9fccd3d4fba1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
