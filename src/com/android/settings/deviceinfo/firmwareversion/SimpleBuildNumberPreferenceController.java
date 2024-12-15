@@ -23,8 +23,6 @@ import android.text.TextUtils;
 
 import com.android.settings.core.BasePreferenceController;
 
-import org.sun.settings.deviceinfo.VersionUtils;
-
 public class SimpleBuildNumberPreferenceController extends BasePreferenceController {
 
     public SimpleBuildNumberPreferenceController(Context context,
@@ -39,13 +37,6 @@ public class SimpleBuildNumberPreferenceController extends BasePreferenceControl
 
     @Override
     public CharSequence getSummary() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append(BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY));
-        final String sunVersion = VersionUtils.getSunVersion();
-        if (!TextUtils.isEmpty(sunVersion)) {
-            sb.append("\n");
-            sb.append(sunVersion);
-        }
-        return sb.toString();
+        return BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY);
     }
 }
