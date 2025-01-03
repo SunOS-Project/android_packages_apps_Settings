@@ -439,6 +439,9 @@ public class NetworkSelectSettings extends DashboardFragment implements
             return;
         }
 
+        int errorCount = mErrorMsgCategory.getPreferenceCount();
+        if (errorCount > 0) mErrorMsgCategory.removeAll();
+
         mCellInfoList = filterOutSatellitePlmn(results.getCellInfos());
         Log.d(TAG, "CellInfoList: " + CellInfoUtil.cellInfoListToString(mCellInfoList));
         updateAllPreferenceCategory();
