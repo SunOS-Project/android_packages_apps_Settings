@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e0dedc1_629bfcdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 6360
+      },
+      "writtenOn": "2025-01-14T18:06:25Z",
+      "side": 1,
+      "message": "Think this is breaking Apps \u003e Special app access \u003e Unrestricted mobile data\n\nToggling any app there is not saved when exiting screen and re-opening above path.",
+      "revId": "488ab0b53787c3b640c1bef1f983c8e791f0b7cd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ],
   "submitRequirementResults": []
 }
