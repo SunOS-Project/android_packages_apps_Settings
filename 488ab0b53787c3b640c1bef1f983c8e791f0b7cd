@@ -34,6 +34,24 @@
       "parentUuid": "9e0dedc1_629bfcdf",
       "revId": "488ab0b53787c3b640c1bef1f983c8e791f0b7cd",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e53109cd_01b2f933",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 31604
+      },
+      "writtenOn": "2025-01-14T19:54:29Z",
+      "side": 1,
+      "message": "I think this will be needed since it looks like it got missed in a rebase; haven\u0027t tested yet: https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Settings/+/34475",
+      "parentUuid": "75467a83_5a2cc3ae",
+      "revId": "488ab0b53787c3b640c1bef1f983c8e791f0b7cd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": []
