@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b09c6d1_4f7501cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-02-04T14:43:39Z",
+      "side": 1,
+      "message": "Better follow AOSP and use also:\n\n\u003e  settings:isPreferenceVisible\u003d\"@bool/config_show_sim_info\"",
+      "revId": "9be7c3164d3112a02ebcf079275b71b528e7e684",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
