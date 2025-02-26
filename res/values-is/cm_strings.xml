@@ -73,6 +73,8 @@
     <string name="high_touch_sensitivity_summary">Auka næmni snertiskjás svo hægt sé að nota hann íklæddur vettlingum</string>
     <string name="tethering_allow_vpn_upstreams_title">Leyfa forritum að nota VPN-tengingar</string>
     <string name="tethering_allow_vpn_upstreams_summary">Leyfa tengipunktsforritum að nota VPN-tengingar tækisins til að tengjast út (upstream)</string>
+    <string name="auto_brightness_one_shot_title">Sjálfvirkt birtustig fyrir eina mynd</string>
+    <string name="auto_brightness_one_shot_summary">Aðlögun birtustigs mun aðeins birtast þegar kveikt er á skjánum</string>
     <string name="data_usage_app_restrict_all">Leyfa aðgang að neti</string>
     <string name="data_usage_app_restrict_all_summary">Virkja notkun nets</string>
     <string name="data_usage_app_restrict_mobile">Farsímagögn</string>
@@ -113,4 +115,5 @@
     <string name="ambient_display_screen_off_udfps_title" product="tablet">Ýttu lengi á fingrafaraskanna til að taka spjaldtölvuna úr lás</string>
     <string name="ambient_display_screen_off_udfps_title" product="device">Ýttu lengi á fingrafaraskanna til að taka tækið úr lás</string>
     <string name="ambient_display_screen_off_udfps_summary">Til að vekja skjáinn og aflæsa, skaltu ýta lengi á fingrafaraskannann undir skjánum.</string>
+    <string name="storage_warning_internal">Aðvörun: Þessi valkostur gæti virkað ekki sem skyldi eða gæti leitt til gagnataps og er því ekki mælt með að þetta sé notað!</string>
 </resources>

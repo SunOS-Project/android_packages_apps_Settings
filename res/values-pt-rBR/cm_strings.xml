@@ -27,10 +27,11 @@
     <string name="adb_enable_summary_root">Permitir a depuração do Android como superusuário</string>
     <string name="backup_transport_setting_label">Alterar provedor de backup</string>
     <string name="backup_transport_title">Selecione o provedor de backup</string>
-    <string name="berry_black_theme_title">Preto puro</string>
-    <string name="berry_black_theme_summary">Preto puro como cor de fundo para tema escuro</string>
+    <string name="berry_black_theme_title">Preto profundo</string>
+    <string name="berry_black_theme_summary">Preto profundo como a cor de fundo do tema escuro</string>
     <string name="lineagelicense_title">Licença LineageOS</string>
-    <string name="status_bar_double_tap_to_sleep_title">Toque duplo para suspender</string>
+    <string name="device_info_protected_single_press">Toque para mostrar informações</string>
+    <string name="status_bar_double_tap_to_sleep_title">Toque duplo para desligar a tela</string>
     <string name="status_bar_double_tap_to_sleep_summary">Toque duas vezes na barra de status ou na tela de bloqueio para desligar a tela</string>
     <string name="fingerprint_enroll_find_sensor_message_front" product="tablet">Localize o sensor de impressão digital na parte frontal do seu tablet.</string>
     <string name="fingerprint_enroll_find_sensor_message_front" product="device">Localize o sensor de impressão digital na parte frontal do seu dispositivo.</string>
@@ -41,6 +42,7 @@
     <string name="fingerprint_enroll_find_sensor_message_side" product="tablet">Localize o sensor de impressão digital na lateral do seu tablet.</string>
     <string name="fingerprint_enroll_find_sensor_message_side" product="device">Localize o sensor de impressão digital na lateral do seu dispositivo.</string>
     <string name="fingerprint_enroll_find_sensor_message_side" product="default">Localize o sensor de impressão digital na parte lateral do seu telefone.</string>
+    <string name="fingerprint_enroll_touch_dialog_message_front" product="tablet">Toque no sensor na parte frontal do seu tablet.</string>
     <string name="fingerprint_enroll_touch_dialog_message_front" product="device">Toque no sensor na parte frontal do seu dispositivo.</string>
     <string name="fingerprint_enroll_touch_dialog_message_front" product="default">Toque no sensor na parte frontal do seu telefone.</string>
     <string name="fingerprint_enroll_touch_dialog_message_rear" product="tablet">Toque no sensor na parte traseira do seu tablet.</string>
@@ -55,17 +57,24 @@
     <string name="volume_link_notification_title">Associar volumes de toque e notificação</string>
     <string name="unlock_scramble_pin_layout_title">Embaralhar layout</string>
     <string name="unlock_scramble_pin_layout_summary">Embaralhar PIN ao desbloquear o dispositivo</string>
+    <string name="fingerprint_wake_unlock_title">Toque no leitor de impressão digital para desbloquear</string>
+    <string name="fingerprint_wake_unlock_touch">Monitora por eventos enquanto a tela está desligada</string>
+    <string name="fingerprint_wake_unlock_press">Somente monitora por eventos enquanto a tela estiver ligada</string>
     <string name="lock_settings_picker_pattern_size_message">Escolha um tamanho para o padrão</string>
     <string name="lockpattern_settings_enable_error_path_title">Exibir erro de padrão</string>
     <string name="lockpattern_settings_enable_dots_title">Exibir pontos no padrão</string>
     <string name="lockscreen_media_art_title">Exibir capa do álbum</string>
     <string name="lockscreen_visualizer_title">Mostrar o visualizador de música</string>
+    <string name="high_touch_polling_rate_title">Melhor resposta ao toque</string>
+    <string name="high_touch_polling_rate_summary">Aumentar a velocidade de resposta ao tocar na tela</string>
     <string name="heads_up_notifications_enabled_title">Notificações pop-up</string>
     <string name="heads_up_notifications_enabled_summary">Mostrar notificações prioritárias numa pequena janela flutuante</string>
     <string name="high_touch_sensitivity_title">Toque de alta sensibilidade</string>
     <string name="high_touch_sensitivity_summary">Aumenta a sensibilidade da tela para poder ser usada com luvas</string>
-    <string name="tethering_allow_vpn_upstreams_title">Permitir que clientes usem VPNs</string>
-    <string name="tethering_allow_vpn_upstreams_summary">Permitir que os clientes de hotspot usem este dispositivo\u2019 para conexões VPN de alta velocidade</string>
+    <string name="tethering_allow_vpn_upstreams_title">Permitir que dispositivos conectados usem VPNs</string>
+    <string name="tethering_allow_vpn_upstreams_summary">Permitir que dispositivos conectados no ponto de acesso usem as conexões de VPN deste dispositivo</string>
+    <string name="auto_brightness_one_shot_title">Brilho automático de captura única</string>
+    <string name="auto_brightness_one_shot_summary">O ajuste de brilho ocorrerá somente no momento em que a tela for ligada</string>
     <string name="data_usage_app_restrict_all">Permitir acesso à rede</string>
     <string name="data_usage_app_restrict_all_summary">Permitir o uso da rede</string>
     <string name="data_usage_app_restrict_mobile">Dados móveis</string>
@@ -85,16 +94,25 @@
     <string name="app_notification_sound_timeout_value_30_minutes">30 minutos</string>
     <string name="proximity_wake_title">Evitar despertar acidental</string>
     <string name="proximity_wake_summary">Verificar o sensor de proximidade antes de ligar a tela</string>
+    <string name="max_refresh_rate_title">Taxa de atualização máxima</string>
     <string name="min_refresh_rate_title">Taxa de atualização mínima</string>
+    <string name="show_navbar_hint_title">Dica de navegação</string>
+    <string name="show_navbar_hint_summary">Mostrar barra de dicas de navegação na parte inferior da tela</string>
     <string name="connected_tws_device_saved_title">Fones de ouvido salvos</string>
     <string name="touchscreen_hovering_title">Flutuar o dedo na tela</string>
     <string name="touchscreen_hovering_summary">Permite que você flutue o dedo na tela como um mouse em navegadores web, desktops remotos, etc</string>
-    <string name="peak_refresh_rate_summary_custom">Aumenta automaticamente a taxa de atualização de 60 para %1$d Hz para alguns conteúdos. Maior uso da bateria</string>
+    <string name="peak_refresh_rate_summary_custom">Aumenta automaticamente a taxa de atualização de 60 para %1$d Hz para alguns conteúdos. Aumenta o uso de bateria.</string>
     <string name="theme_customization_font_title">Fonte</string>
     <string name="theme_customization_icon_shape_title">Formato dos ícones</string>
     <string name="touchscreen_gesture_settings_title">Gestos na tela</string>
     <string name="touchscreen_gesture_settings_summary">Faça vários gestos na tela para ações rápidas</string>
-    <string name="wake_when_plugged_or_unplugged_title">Acordar ao plugar</string>
+    <string name="wake_when_plugged_or_unplugged_title">Acordar ao conectar</string>
     <string name="wake_when_plugged_or_unplugged_summary">Ativar a tela ao ligar ou desligar do carregador</string>
     <string name="fast_charging_title">Carregamento rápido</string>
+    <string name="fast_charging_summary">Desative para reduzir o calor produzido pelo dispositivo durante o carregamento ou para estender a vida útil da bateria</string>
+    <string name="ambient_display_screen_off_udfps_title" product="default">Pressione e segure o sensor de impressão digital para desbloquear o telefone</string>
+    <string name="ambient_display_screen_off_udfps_title" product="tablet">Pressione e segure o sensor de impressão digital para desbloquear o tablet</string>
+    <string name="ambient_display_screen_off_udfps_title" product="device">Pressione e segure o sensor de impressão digital para desbloquear o dispositivo</string>
+    <string name="ambient_display_screen_off_udfps_summary">Para ligar sua tela e desbloquear, pressione e segure o sensor de impressão digital sob a tela.</string>
+    <string name="storage_warning_internal">Aviso: Esta opção pode não funcionar corretamente ou levar à perda de dados, portanto, não é recomendada!</string>
 </resources>

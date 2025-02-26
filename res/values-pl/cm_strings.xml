@@ -16,10 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <plurals name="show_dev_countdown_cm">
-        <item quantity="one">Jesteś o <xliff:g id="step_count">%1$d</xliff:g> krok od włączenia ustawień programisty.</item>
-        <item quantity="few">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroki od włączenia ustawień programisty.</item>
-        <item quantity="many">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroków od włączenia ustawień programisty.</item>
-        <item quantity="other">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroków od włączenia ustawień programisty.</item>
+        <item quantity="one">Jesteś o <xliff:g id="step_count">%1$d</xliff:g> krok od włączenia ustawień programistycznych.</item>
+        <item quantity="few">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroki od włączenia ustawień programistycznych.</item>
+        <item quantity="many">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroków od włączenia ustawień programistycznych.</item>
+        <item quantity="other">Jesteś <xliff:g id="step_count">%1$d</xliff:g> kroków od włączenia ustawień programistycznych.</item>
     </plurals>
     <string name="show_dev_on_cm">Aktywowano opcje programistyczne!</string>
     <string name="show_dev_already_cm">Opcje programistyczne już zostały aktywowane.</string>
@@ -55,7 +55,7 @@
     <string name="fingerprint_enroll_touch_dialog_message_side" product="default">Dotknij czujnika znajdującego się z boku twojego telefonu.</string>
     <string name="increasing_ring_volume_option_title">Narastająca głośność dzwonka</string>
     <string name="increasing_ring_min_volume_title">Głośność początkowa</string>
-    <string name="increasing_ring_ramp_up_time_title">Wydłużenie odstępu</string>
+    <string name="increasing_ring_ramp_up_time_title">Czas narastania</string>
     <string name="volume_link_notification_title">Połącz głośność dzwonka i powiadomień</string>
     <string name="unlock_scramble_pin_layout_title">Pomieszany układ</string>
     <string name="unlock_scramble_pin_layout_summary">Pomieszany układ cyfr przy odblokowywaniu urządzenia kodem PIN</string>
@@ -108,7 +108,7 @@
     <string name="theme_customization_icon_shape_title">Kształt ikony</string>
     <string name="touchscreen_gesture_settings_title">Gesty ekranu dotykowego</string>
     <string name="touchscreen_gesture_settings_summary">Wykonuj różne gesty na ekranie dotykowym, aby wykonać szybkie akcje</string>
-    <string name="wake_when_plugged_or_unplugged_title">Wybudź przy podłączaniu</string>
+    <string name="wake_when_plugged_or_unplugged_title">Wybudzaj przy podłączaniu</string>
     <string name="wake_when_plugged_or_unplugged_summary">Włącz ekran podczas podłączania i odłączania od źródła zasilania</string>
     <string name="fast_charging_title">Szybkie ładowanie</string>
     <string name="fast_charging_summary">Wyłącz, aby zmniejszyć ciepło wytwarzane przez urządzenie podczas ładowania lub wydłużyć żywotność baterii</string>

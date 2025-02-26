@@ -21,15 +21,23 @@
     </plurals>
     <string name="show_dev_on_cm">Du har aktiverat utvecklingsinställningar!</string>
     <string name="show_dev_already_cm">Det behövs inte, du har redan aktiverat utvecklingsinställningar.</string>
+    <string name="keyboard_extras_title">Tillval</string>
+    <string name="advanced_keyboard_settings_title">Avancerade inställningar</string>
+    <string name="adb_enable_root">Rootad felsökning</string>
+    <string name="adb_enable_summary_root">Tillåt att Android-felsökning körs som root</string>
+    <string name="backup_transport_setting_label">Ändra säkerhetskopieringsleverantör</string>
+    <string name="backup_transport_title">Välj säkerhetskopieringsleverantör</string>
     <string name="berry_black_theme_title">Helsvart</string>
     <string name="berry_black_theme_summary">Helsvart bakgrund för mörkt tema</string>
     <string name="lineagelicense_title">LineageOS Juridik</string>
+    <string name="device_info_protected_single_press">Tryck för att visa info</string>
     <string name="status_bar_double_tap_to_sleep_title">Dubbeltryck för att släcka skärmen</string>
     <string name="increasing_ring_volume_option_title">Ökande ljudvolym</string>
     <string name="increasing_ring_min_volume_title">Startvolym</string>
     <string name="increasing_ring_ramp_up_time_title">Upprampningstid</string>
     <string name="unlock_scramble_pin_layout_title">Kasta om layout</string>
     <string name="unlock_scramble_pin_layout_summary">Kasta om PIN-layout vid upplåsning av enheten</string>
+    <string name="lock_settings_picker_pattern_size_message">Välj en mönsterstorlek</string>
     <string name="lockpattern_settings_enable_error_path_title">Visa mönster vid fel</string>
     <string name="lockpattern_settings_enable_dots_title">Visa mönsterpunkter</string>
     <string name="lockscreen_visualizer_title">Visa musikvisualisering</string>
@@ -55,7 +63,10 @@
     <string name="touchscreen_hovering_title">Tryckskärm-hovring</string>
     <string name="touchscreen_hovering_summary">Låter dig hovra över skärmen som en mus i webbläsare, fjärrskrivbord, etc</string>
     <string name="peak_refresh_rate_summary_custom">Höjer uppdateringsfrekvensen dynamiskt från 60 till %1$d Hz för visst innehåll. Ökar batteriförbrukningen.</string>
+    <string name="theme_customization_font_title">Typsnitt</string>
     <string name="touchscreen_gesture_settings_title">Skärmgester</string>
     <string name="wake_when_plugged_or_unplugged_title">Vakna vid koppling</string>
     <string name="wake_when_plugged_or_unplugged_summary">Starta skärmen vid anslutning till eller frånkoppling från strömkälla</string>
+    <string name="fast_charging_title">Snabbladdning</string>
+    <string name="fast_charging_summary">Inaktivera för att minska värmen som produceras av enheten under laddning eller för att förlänga batteriets livslängd</string>
 </resources>
