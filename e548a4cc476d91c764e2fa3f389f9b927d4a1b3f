@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99fb5d6e_8b1fda40",
+        "filename": "src/com/android/settings/gestures/GestureNavigationSettingsFragment.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-03-25T18:01:21Z",
+      "side": 1,
+      "message": "Should be moved to the top, along with the rest of the static imports.",
+      "revId": "e548a4cc476d91c764e2fa3f389f9b927d4a1b3f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951c0377_360f6afc",
+        "filename": "src/com/android/settings/gestures/SystemNavigationGestureSettings.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-03-25T18:01:21Z",
+      "side": 1,
+      "message": "Should be moved to the top, along with the rest of the static imports.",
+      "revId": "e548a4cc476d91c764e2fa3f389f9b927d4a1b3f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
