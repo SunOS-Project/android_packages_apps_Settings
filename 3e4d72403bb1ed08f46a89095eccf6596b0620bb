@@ -16,6 +16,24 @@
       "message": "pls pick the smaller more correct one from calyx Gerrit and re-add me",
       "revId": "3e4d72403bb1ed08f46a89095eccf6596b0620bb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "816ed638_f7014932",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34930
+      },
+      "writtenOn": "2025-04-04T14:25:54Z",
+      "side": 1,
+      "message": "https://review.calyxos.org/c/CalyxOS/platform_packages_apps_Settings/+/35260\n\nThis right ?",
+      "parentUuid": "43d2252c_e44fa706",
+      "revId": "3e4d72403bb1ed08f46a89095eccf6596b0620bb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
