@@ -458,8 +458,6 @@ public class StorageItemPreferenceController extends AbstractPreferenceControlle
         mTrashPreference.setStorageSize(storageCache.trashSize, mTotalSize, animate);
         if (mSystemPreference != null) {
             mSystemPreference.setStorageSize(storageCache.systemSize, mTotalSize, animate);
-            mSystemPreference.setTitle(mContext.getString(R.string.storage_os_name,
-                    Build.VERSION.RELEASE));
         }
         if (mTemporaryFilesPreference != null) {
             mTemporaryFilesPreference.setStorageSize(storageCache.temporaryFilesSize, mTotalSize,

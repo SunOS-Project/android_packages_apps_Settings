@@ -11411,7 +11411,7 @@
     <string name="storage_system">System</string>
 
     <!-- New Preference label for the System storage section. [CHAR LIMIT=50] -->
-    <string name="storage_os_name">Android <xliff:g id="version" example="8">%s</xliff:g></string>
+    <string name="storage_os_name">Android</string>
 
     <!-- Preference label for the System storage section. [CHAR LIMIT=50] -->
     <string name="storage_temporary_files">Temporary system files</string>
