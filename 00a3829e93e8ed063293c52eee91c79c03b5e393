@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "473f557f_4a729d39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 34879
+      },
+      "writtenOn": "2025-04-07T16:37:21Z",
+      "side": 1,
+      "message": "The Gitlab issue mentions a few alternative ways (including some less pragmatic ways) to fix this bug. Feel free to send me down another road.\n\nBTW, I wonder whether this commit would require some automatic or manual updating of the translations to remove the `xliff:g` from them, as well.",
+      "revId": "00a3829e93e8ed063293c52eee91c79c03b5e393",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
