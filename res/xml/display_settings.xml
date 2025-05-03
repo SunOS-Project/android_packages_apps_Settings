@@ -361,24 +361,6 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/theme_category_title">
-
-        <!-- Font styles -->
-        <Preference
-            android:key="android.theme.customization.fonts"
-            android:title="@string/theme_customization_font_title"
-            android:summary="@string/theme_customization_font_summary"
-            android:fragment="org.sun.settings.display.theme.FontsPickerFragment"/>
-
-        <!-- Icon shapes -->
-        <Preference
-            android:key="android.theme.customization.adaptive_icon_shape"
-            android:title="@string/theme_customization_icon_shape_title"
-            android:summary="@string/theme_customization_icon_shape_summary"
-            android:fragment="org.sun.settings.display.theme.IconShapesFragment"/>
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="iris_video_enhancement"
         android:title="@string/video_enhancement_category_title"
         settings:controller="org.sun.settings.display.iris.FeaturesCategoryPreferenceController">
