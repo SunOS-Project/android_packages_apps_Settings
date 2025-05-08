@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+/*
+ * Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
+ * Copyright (c) 2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause-Clear
+ */
+
 package com.android.settings.deviceinfo.imei;
 
 import static android.telephony.TelephonyManager.PHONE_TYPE_CDMA;
@@ -58,6 +64,8 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
     private Fragment mFragment;
     private SlotSimStatus mSlotSimStatus;
     private QtiImeiInfo mQtiImeiInfo[];
+    private boolean mIsDsdsToSsConfigValid;
+    private int mSlotCount = -1;
 
     public ImeiInfoPreferenceController(Context context, String key) {
         super(context, key);
@@ -67,6 +75,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
         mFragment = fragment;
         mSlotSimStatus = slotSimStatus;
         TelephonyUtils.connectExtTelephonyService(mContext);
+        mIsDsdsToSsConfigValid = TelephonyUtils.isDsdsToSsConfigValid();
     }
 
     private boolean isMultiSim() {
@@ -93,6 +102,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
         if ((!SubscriptionUtil.isSimHardwareVisible(mContext)) || (mSlotSimStatus == null)) {
             return;
         }
+        mSlotCount = TelephonyUtils.getUiccSlotsCount(mContext);
         mTelephonyManager = mContext.getSystemService(TelephonyManager.class);
         PreferenceCategory category = screen.findPreference(KEY_PREFERENCE_CATEGORY);
         Preference preference = category.findPreference(DEFAULT_KEY);
@@ -104,7 +114,9 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
         category.removePreference(preference);
 
         // Add additional preferences for each imei slot in the device
-        for (int simSlotNumber = 0; simSlotNumber < mSlotSimStatus.size(); simSlotNumber++) {
+        // Loop through all active SIMs or all slots if mIsDsdsToSsConfigValid is enabled
+        for (int simSlotNumber = 0; simSlotNumber < mSlotSimStatus.size()
+                || (mIsDsdsToSsConfigValid && simSlotNumber < mSlotCount); simSlotNumber++) {
             Preference multiImeiPreference = createNewPreference(screen.getContext());
             multiImeiPreference.setOrder(imeiPreferenceOrder + 1 + simSlotNumber);
             multiImeiPreference.setKey(DEFAULT_KEY + (1 + simSlotNumber));
@@ -112,7 +124,11 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
             multiImeiPreference.setCopyingEnabled(true);
 
             category.addPreference(multiImeiPreference);
-       }
+            if (mIsDsdsToSsConfigValid) {
+                multiImeiPreference.setTitle(getTitle(simSlotNumber));
+                multiImeiPreference.setSummary(getSummary(simSlotNumber));
+            }
+        }
 
         /* current code will parse the slot id from the preference key value
          * the key for the CT new preference is populated as below
@@ -217,7 +233,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
     private String getImei(int slot) {
         String imei = null;
         try {
-            if (isMinHalVersion2_1()) {
+            if (isMinHalVersion2_1() && !mIsDsdsToSsConfigValid) {
                 imei = mTelephonyManager.getImei(slot);
             } else {
                 if (mQtiImeiInfo == null) {
@@ -243,9 +259,8 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
 
     private CharSequence getTitleForGsmPhone(int simSlot, boolean isPrimaryImei) {
         int titleId = isPrimaryImei ? R.string.imei_multi_sim_primary : R.string.imei_multi_sim;
-        return isMultiSim() ? mContext.getString(titleId, simSlot + 1)
+        return isMultiSim() || mIsDsdsToSsConfigValid ? mContext.getString(titleId, simSlot + 1)
                 : mContext.getString(R.string.status_imei);
-
     }
 
     private CharSequence getTitleForCdmaPhone(int simSlot, boolean isPrimaryImei) {
@@ -260,7 +275,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
             return false;
         }
         String primaryImei = null;
-        if (isMinHalVersion2_1()) {
+        if (isMinHalVersion2_1() && !mIsDsdsToSsConfigValid) {
             try {
                 primaryImei = mTelephonyManager.getPrimaryImei();
             } catch (Exception exception) {
@@ -302,7 +317,8 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
             convertedSlotId = convertSlotId(simSlot);
         }
 
-        boolean isPrimaryImei = isMultiSim() && isPrimaryImei(simSlot);
+        boolean isPrimaryImei = (isMultiSim() || mIsDsdsToSsConfigValid) && isPrimaryImei(simSlot);
+
         final int phoneType = getPhoneType(simSlot);
         return phoneType == PHONE_TYPE_CDMA ? getTitleForCdmaPhone(convertedSlotId, isPrimaryImei)
                 : getTitleForGsmPhone(convertedSlotId, isPrimaryImei);
