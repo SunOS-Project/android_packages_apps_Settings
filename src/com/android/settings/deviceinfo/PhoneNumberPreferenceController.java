@@ -105,7 +105,8 @@ public class PhoneNumberPreferenceController extends BasePreferenceController
                 simSlotNumber = Integer.parseInt(
                         prefKey.replaceAll("[^0-9]", ""));
             }
-            getPhoneNumber(simSlotNumber);
+            mPreferenceList.get(simSlotNumber).setSummary(getPhoneNumber(simSlotNumber));
+            return true;
         }
         return super.handlePreferenceTreeClick(preference);
     }
