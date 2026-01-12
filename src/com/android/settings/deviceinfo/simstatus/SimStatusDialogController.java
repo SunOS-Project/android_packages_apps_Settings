@@ -477,8 +477,16 @@ public class SimStatusDialogController implements DefaultLifecycleObserver {
         String dataNetworkTypeName = null;
         String voiceNetworkTypeName = null;
         final int subId = mSubscriptionInfo.getSubscriptionId();
-        final int actualDataNetworkType = getTelephonyManager().getDataNetworkType();
-        final int actualVoiceNetworkType = getTelephonyManager().getVoiceNetworkType();
+        int actualDataNetworkType = TelephonyManager.NETWORK_TYPE_UNKNOWN;
+        int actualVoiceNetworkType = TelephonyManager.NETWORK_TYPE_UNKNOWN;
+        PackageManager pm = mContext.getPackageManager();
+        if (pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS)) {
+            actualDataNetworkType = getTelephonyManager().getDataNetworkType();
+        }
+        if (pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CALLING)) {
+            actualVoiceNetworkType = getTelephonyManager().getVoiceNetworkType();
+        }
+
         final int overrideNetworkType = mTelephonyDisplayInfo == null
                 ? TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NONE
                 : mTelephonyDisplayInfo.getOverrideNetworkType();
@@ -496,23 +504,25 @@ public class SimStatusDialogController implements DefaultLifecycleObserver {
         if (actualDataNetworkType == TelephonyManager.NETWORK_TYPE_LTE
                 && isOverrideNwTypeNrAdvancedOrNsa) {
             dataNetworkTypeName = "NR NSA";
-        }
-
-        boolean isLteVoice = (TelephonyManager.NETWORK_TYPE_LTE == actualVoiceNetworkType);
-        boolean isLteData = (TelephonyManager.NETWORK_TYPE_LTE == actualDataNetworkType);
-        if (isLteVoice || isLteData) {
-            Config mappingConfig = getMappingConfig(mContext);
-            if (mTelephonyDisplayInfo == null) {
-                boolean isUsingCA = mTelephonyManager.getServiceState().isUsingCarrierAggregation();
-                mTelephonyDisplayInfo = new TelephonyDisplayInfo(TelephonyManager.NETWORK_TYPE_LTE,
-                        isUsingCA ? TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_LTE_CA
-                                : TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NONE);
-            }
-            String mappedTypeName = getMappingNetworkType(mContext, mappingConfig,
-                    mTelephonyDisplayInfo, subId);
-            if (!mappedTypeName.isEmpty()) {
-                voiceNetworkTypeName = isLteVoice ? mappedTypeName : voiceNetworkTypeName;
-                dataNetworkTypeName = isLteData ? mappedTypeName : dataNetworkTypeName;
+        } else {
+            boolean isLteVoice = (TelephonyManager.NETWORK_TYPE_LTE == actualVoiceNetworkType);
+            boolean isLteData = (TelephonyManager.NETWORK_TYPE_LTE == actualDataNetworkType);
+            if (isLteVoice || isLteData) {
+                Config mappingConfig = getMappingConfig(mContext);
+                if (mTelephonyDisplayInfo == null) {
+                    boolean isUsingCA =
+                            mTelephonyManager.getServiceState().isUsingCarrierAggregation();
+                    mTelephonyDisplayInfo = new TelephonyDisplayInfo
+                            (TelephonyManager.NETWORK_TYPE_LTE,
+                                    isUsingCA ? TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_LTE_CA
+                                            : TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NONE);
+                }
+                String mappedTypeName = getMappingNetworkType(mContext, mappingConfig,
+                        mTelephonyDisplayInfo, subId);
+                if (!mappedTypeName.isEmpty()) {
+                    voiceNetworkTypeName = isLteVoice ? mappedTypeName : voiceNetworkTypeName;
+                    dataNetworkTypeName = isLteData ? mappedTypeName : dataNetworkTypeName;
+                }
             }
         }
 
